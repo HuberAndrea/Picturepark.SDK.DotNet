@@ -36,12 +36,12 @@ namespace Picturepark.SDK.V1
 
         /// <summary>Creates a <see cref="ListItem"/>s based on an object and its references.</summary>
         /// <param name="content">The object to create <see cref="ListItem"/>s from.</param>
-        /// <param name="schemaId">The schema ID of the object.</param>
+        /// <param name="schemaIdGenerator">The schema ID generator (null to use the type name).</param>
         /// <param name="allowMissingDependencies">Allow creating <see cref="ListItem"/>s that refer to list items or contents that don't exist in the system.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The created <see cref="ListItem"/>s.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public async Task<IEnumerable<ListItem>> CreateFromObjectAsync(object content, string schemaId, bool allowMissingDependencies = false, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IEnumerable<ListItem>> CreateFromObjectAsync(object content, Func<Type, string> schemaIdGenerator = null, bool allowMissingDependencies = false, CancellationToken cancellationToken = default(CancellationToken))
         {
             var createManyRequest = new ListItemCreateManyRequest
             {
@@ -49,11 +49,16 @@ namespace Picturepark.SDK.V1
                 AllowMissingDependencies = allowMissingDependencies
             };
 
-            var referencedObjects = await CreateReferencedObjectsAsync(content, allowMissingDependencies, cancellationToken).ConfigureAwait(false);
+            if (schemaIdGenerator == null)
+            {
+                schemaIdGenerator = type => type.Name;
+            }
+
+            var referencedObjects = await CreateReferencedObjectsAsync(content, allowMissingDependencies, schemaIdGenerator, cancellationToken).ConfigureAwait(false);
 
             createManyRequest.Requests.Add(new ListItemCreateRequest
             {
-                ContentSchemaId = schemaId,
+                ContentSchemaId = schemaIdGenerator(content.GetType()),
                 Content = content
             });
 
@@ -179,7 +184,7 @@ namespace Picturepark.SDK.V1
                 Convert.GetTypeCode(type) != TypeCode.Object;
         }
 
-        private async Task<IEnumerable<ListItem>> CreateReferencedObjectsAsync(object obj, bool allowMissingDependencies, CancellationToken cancellationToken = default(CancellationToken))
+        private async Task<IEnumerable<ListItem>> CreateReferencedObjectsAsync(object obj, bool allowMissingDependencies, Func<Type, string> schemaIdGenerator, CancellationToken cancellationToken)
         {
             var referencedListItems = new List<ListItemCreateRequest>();
             var createManyRequest = new ListItemCreateManyRequest
@@ -188,7 +193,7 @@ namespace Picturepark.SDK.V1
                 AllowMissingDependencies = allowMissingDependencies
             };
 
-            BuildReferencedListItems(obj, referencedListItems);
+            BuildReferencedListItems(obj, referencedListItems, schemaIdGenerator);
 
             // Assign Ids on ObjectCreation
             foreach (var referencedObject in referencedListItems)
@@ -218,7 +223,7 @@ namespace Picturepark.SDK.V1
             return results;
         }
 
-        private void BuildReferencedListItems(object obj, List<ListItemCreateRequest> referencedListItems)
+        private void BuildReferencedListItems(object obj, List<ListItemCreateRequest> referencedListItems, Func<Type, string> schemaIdGenerator)
         {
             // Scan child properties for references
             var nonReferencedProperties = obj.GetType()
@@ -232,12 +237,12 @@ namespace Picturepark.SDK.V1
                 {
                     foreach (var value in (IList)property.GetValue(obj))
                     {
-                        BuildReferencedListItems(value, referencedListItems);
+                        BuildReferencedListItems(value, referencedListItems, schemaIdGenerator);
                     }
                 }
                 else
                 {
-                    BuildReferencedListItems(property.GetValue(obj), referencedListItems);
+                    BuildReferencedListItems(property.GetValue(obj), referencedListItems, schemaIdGenerator);
                 }
             }
 
@@ -260,7 +265,7 @@ namespace Picturepark.SDK.V1
                             var refObject = value as IReferenceObject;
                             if (refObject == null || string.IsNullOrEmpty(refObject.RefId))
                             {
-                                var schemaId = value.GetType().Name;
+                                var schemaId = schemaIdGenerator(value.GetType());
 
                                 // Add metadata object if it does not already exist
                                 if (referencedListItems.Where(i => i.ContentSchemaId == schemaId).Select(i => i.Content).All(i => i != value))
@@ -284,7 +289,7 @@ namespace Picturepark.SDK.V1
                         var refObject = value as IReferenceObject;
                         if (refObject == null || string.IsNullOrEmpty(refObject.RefId))
                         {
-                            var schemaId = value.GetType().Name;
+                            var schemaId = schemaIdGenerator(value.GetType());
 
                             var hasValueBeenAdded = referencedListItems
                                 .Any(i => i.ContentSchemaId == schemaId && i.Content == value);

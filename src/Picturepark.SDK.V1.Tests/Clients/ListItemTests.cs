@@ -153,7 +153,7 @@ namespace Picturepark.SDK.V1.Tests.Clients
             };
 
             /// Act
-            var createdObjects = await _client.ListItems.CreateFromObjectAsync(tag, nameof(Tag));
+            var createdObjects = await _client.ListItems.CreateFromObjectAsync(tag);
 
             /// Assert
             Assert.Single(createdObjects);
@@ -170,6 +170,16 @@ namespace Picturepark.SDK.V1.Tests.Clients
                 Name = "Dogname1",
                 PlaysCatch = true
             };
+
+            var schemaSuffix = new Random().Next(0, 999999);
+            foreach (var type in new[] { typeof(Person), typeof(SoccerPlayer), typeof(SoccerTrainer) })
+            {
+                var schemas = await _client.Schemas.GenerateSchemasAsync(type, t => t.Name + schemaSuffix);
+                foreach (var schema in schemas)
+                {
+                    await _client.Schemas.CreateOrUpdateAndWaitForCompletionAsync(schema, true);
+                }
+            }
 
             /// Act
             // Using Helper method
@@ -197,7 +207,7 @@ namespace Picturepark.SDK.V1.Tests.Clients
                         },
                         dog
                     }
-                }, nameof(SoccerPlayer)); // TODO: ListItemClient.CreateFromObjectAsync: We should add an attribute to the class with its schema name instead of passing it as parameter
+                }, type => type.Name + schemaSuffix); // TODO: ListItemClient.CreateFromObjectAsync: We should add an attribute to the class with its schema name instead of passing it as parameter
 
             var soccerTrainerTree = await _client.ListItems.CreateFromObjectAsync(
                 new SoccerTrainer
@@ -207,7 +217,7 @@ namespace Picturepark.SDK.V1.Tests.Clients
                     Firstname = "Urxxxxs",
                     LastName = "xxxxxxxx",
                     TrainerSince = new DateTime(2000, 1, 1)
-                }, nameof(SoccerTrainer));
+                }, type => type.Name + schemaSuffix);
 
             var personTree = await _client.ListItems.CreateFromObjectAsync(
                 new Person
@@ -216,7 +226,7 @@ namespace Picturepark.SDK.V1.Tests.Clients
                     EmailAddress = "xyyyy@teyyyyyyst.com",
                     Firstname = "Urxxxxs",
                     LastName = "xxxxxxxx"
-                }, nameof(Person));
+                }, type => type.Name + schemaSuffix);
 
             /// Assert
             Assert.True(soccerPlayerTree.Any());

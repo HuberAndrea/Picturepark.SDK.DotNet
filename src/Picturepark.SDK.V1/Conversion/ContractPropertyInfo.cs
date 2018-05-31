@@ -10,6 +10,8 @@ namespace Picturepark.SDK.V1.Conversion
 
         public bool IsOverwritten { get; set; }
 
+        public Type Type { get; set; }
+
         public string TypeName { get; set; }
 
         public bool IsSimpleType { get; set; }

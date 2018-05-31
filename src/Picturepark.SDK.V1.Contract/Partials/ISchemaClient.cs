@@ -9,11 +9,12 @@ namespace Picturepark.SDK.V1.Contract
     {
         /// <summary>Generates the <see cref="SchemaDetail"/>s for the given type and the referenced types.</summary>
         /// <param name="type">The type.</param>
+        /// <param name="schemaIdGenerator">The schema ID generator.</param>
         /// <param name="schemaDetails">The existing schema details.</param>
         /// <param name="generateDependencySchema">Specifies whether to generate dependent schemas.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The collection of schema details.</returns>
-        Task<ICollection<SchemaDetail>> GenerateSchemasAsync(Type type, IEnumerable<SchemaDetail> schemaDetails = null, bool generateDependencySchema = true, CancellationToken cancellationToken = default(CancellationToken));
+        Task<ICollection<SchemaDetail>> GenerateSchemasAsync(Type type, Func<Type, string> schemaIdGenerator = null, IEnumerable<SchemaDetail> schemaDetails = null, bool generateDependencySchema = true, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>Creates or updates the given <see cref="SchemaDetail"/>.</summary>
         /// <param name="schemaDetail">The schema detail.</param>

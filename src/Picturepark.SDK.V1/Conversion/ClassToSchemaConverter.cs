@@ -16,13 +16,15 @@ namespace Picturepark.SDK.V1.Conversion
     public class ClassToSchemaConverter
     {
         private readonly string _defaultLanguage;
+        private readonly Func<Type, string> _schemaIdGenerator;
         private readonly IContractResolver _contractResolver;
         private readonly List<string> _ignoredProperties = new List<string> { "_refId", "_relationType", "_targetDocType", "_targetId" };
 
-        public ClassToSchemaConverter(string defaultLanguage)
+        public ClassToSchemaConverter(string defaultLanguage, Func<Type, string> schemaIdGenerator)
             : this(new CamelCasePropertyNamesContractResolver())
         {
             _defaultLanguage = defaultLanguage;
+            _schemaIdGenerator = schemaIdGenerator;
         }
 
         public ClassToSchemaConverter(IContractResolver contractResolver)
@@ -81,7 +83,7 @@ namespace Picturepark.SDK.V1.Conversion
 
         private SchemaDetail CreateSchemas(Type contractType, List<ContractPropertyInfo> properties, string parentSchemaId, List<SchemaDetail> schemaList, int levelOfCall = 0, bool generateDependencySchema = true)
         {
-            var schemaId = contractType.Name;
+            var schemaId = _schemaIdGenerator(contractType);
 
             var typeAttributes = contractType.GetTypeInfo()
                 .GetCustomAttributes(typeof(PictureparkSchemaTypeAttribute), true)
@@ -116,7 +118,7 @@ namespace Picturepark.SDK.V1.Conversion
             {
                 foreach (var customType in customTypes)
                 {
-                    var referencedSchemaId = customType.TypeName;
+                    var referencedSchemaId = _schemaIdGenerator(customType.Type);
                     if (schemaList.Any(d => d.Id == referencedSchemaId))
                         continue;
 
@@ -318,6 +320,7 @@ namespace Picturepark.SDK.V1.Conversion
                             {
                                 propertyInfo.IsArray = typeInfo.ImplementedInterfaces.Contains(typeof(IList));
                                 propertyInfo.IsDictionary = true;
+                                propertyInfo.Type = property.PropertyType;
                                 propertyInfo.TypeName = property.PropertyType.Name;
                             }
                             else
@@ -331,6 +334,7 @@ namespace Picturepark.SDK.V1.Conversion
                                 else
                                 {
                                     propertyInfo.IsCustomType = true;
+                                    propertyInfo.Type = propertyGenericArg;
                                     propertyInfo.TypeName = propertyGenericArg.Name;
                                     propertyInfo.FullName = propertyGenericArg.FullName;
                                     propertyInfo.AssemblyFullName = propertyGenericArg.GetTypeInfo().Assembly.FullName;
@@ -355,6 +359,7 @@ namespace Picturepark.SDK.V1.Conversion
                         else
                         {
                             propertyInfo.IsCustomType = true;
+                            propertyInfo.Type = property.PropertyType;
                             propertyInfo.TypeName = property.PropertyType.Name;
                             propertyInfo.FullName = property.PropertyType.FullName;
                             propertyInfo.AssemblyFullName = typeInfo.Assembly.FullName;
@@ -449,7 +454,7 @@ namespace Picturepark.SDK.V1.Conversion
 
             if (property.IsDictionary)
             {
-                if (property.TypeName == "TranslatedStringDictionary")
+                if (property.Type.Name == "TranslatedStringDictionary")
                 {
                     field = new FieldTranslatedString
                     {
@@ -605,7 +610,7 @@ namespace Picturepark.SDK.V1.Conversion
                         {
                             Index = true,
                             RelationTypes = relationTypes,
-                            SchemaId = property.TypeName,
+                            SchemaId = _schemaIdGenerator(property.Type),
                             SchemaIndexingInfo = schemaIndexingAttribute?.SchemaIndexingInfo
                         };
                     }
@@ -615,7 +620,7 @@ namespace Picturepark.SDK.V1.Conversion
                         {
                             Index = true,
                             SimpleSearch = true,
-                            SchemaId = property.TypeName,
+                            SchemaId = _schemaIdGenerator(property.Type),
                             Filter = tagboxAttributes?.Filter,
                             SchemaIndexingInfo = schemaIndexingAttribute?.SchemaIndexingInfo,
                             ListItemCreateTemplate = listItemCreateTemplateAttribute?.ListItemCreateTemplate
@@ -627,7 +632,7 @@ namespace Picturepark.SDK.V1.Conversion
                         {
                             Index = true,
                             SimpleSearch = true,
-                            SchemaId = property.TypeName,
+                            SchemaId = _schemaIdGenerator(property.Type),
                             SchemaIndexingInfo = schemaIndexingAttribute?.SchemaIndexingInfo
                         };
                     }
@@ -641,11 +646,11 @@ namespace Picturepark.SDK.V1.Conversion
                             Index = true,
                             SimpleSearch = true,
                             RelationTypes = relationTypes,
-                            SchemaId = property.TypeName,
+                            SchemaId = _schemaIdGenerator(property.Type),
                             SchemaIndexingInfo = schemaIndexingAttribute?.SchemaIndexingInfo
                         };
                     }
-                    else if (property.TypeName == "GeoPoint")
+                    else if (property.Type.Name == "GeoPoint")
                     {
                         field = new FieldGeoPoint
                         {
@@ -658,7 +663,7 @@ namespace Picturepark.SDK.V1.Conversion
                         {
                             Index = true,
                             SimpleSearch = true,
-                            SchemaId = property.TypeName,
+                            SchemaId = _schemaIdGenerator(property.Type),
                             Filter = tagboxAttributes?.Filter,
                             SchemaIndexingInfo = schemaIndexingAttribute?.SchemaIndexingInfo,
                             ListItemCreateTemplate = listItemCreateTemplateAttribute?.ListItemCreateTemplate
@@ -670,7 +675,7 @@ namespace Picturepark.SDK.V1.Conversion
                         {
                             Index = true,
                             SimpleSearch = true,
-                            SchemaId = property.TypeName,
+                            SchemaId = _schemaIdGenerator(property.Type),
                             SchemaIndexingInfo = schemaIndexingAttribute?.SchemaIndexingInfo
                         };
                     }

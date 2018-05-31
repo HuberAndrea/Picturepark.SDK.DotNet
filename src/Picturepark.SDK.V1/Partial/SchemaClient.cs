@@ -22,18 +22,20 @@ namespace Picturepark.SDK.V1
 
         /// <summary>Generates the <see cref="SchemaDetail"/>s for the given type and the referenced types.</summary>
         /// <param name="type">The type.</param>
+        /// <param name="schemaIdGenerator">The schema ID generator.</param>
         /// <param name="schemaDetails">The existing schema details.</param>
         /// <param name="generateDependencySchema">Specifies whether to generate dependent schemas.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The collection of schema details.</returns>
         public async Task<ICollection<SchemaDetail>> GenerateSchemasAsync(
             Type type,
+            Func<Type, string> schemaIdGenerator = null,
             IEnumerable<SchemaDetail> schemaDetails = null,
             bool generateDependencySchema = true,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             var config = await _infoClient.GetAsync(cancellationToken).ConfigureAwait(false);
-            var schemaConverter = new ClassToSchemaConverter(config.LanguageConfiguration.DefaultLanguage);
+            var schemaConverter = new ClassToSchemaConverter(config.LanguageConfiguration.DefaultLanguage, schemaIdGenerator);
             return await schemaConverter.GenerateAsync(type, schemaDetails ?? new List<SchemaDetail>(), generateDependencySchema).ConfigureAwait(false);
         }
 
@@ -41,6 +43,7 @@ namespace Picturepark.SDK.V1
         /// <param name="schemaDetail">The schema detail.</param>
         /// <param name="enableForBinaryFiles">Specifies whether to enable the schema for binary files.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
         /// <returns>The task.</returns>
         public async Task CreateOrUpdateAndWaitForCompletionAsync(SchemaDetail schemaDetail, bool enableForBinaryFiles, CancellationToken cancellationToken = default(CancellationToken))
         {

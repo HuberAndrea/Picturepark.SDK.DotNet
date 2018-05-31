@@ -19,12 +19,12 @@ namespace Picturepark.SDK.V1.Contract
 
         /// <summary>Creates a <see cref="ListItem"/>s based on an object and its references.</summary>
         /// <param name="content">The object to create <see cref="ListItem"/>s from.</param>
-        /// <param name="schemaId">The schema ID of the object.</param>
+        /// <param name="schemaIdGenerator">The schema ID generator (null to use the type name).</param>
         /// <param name="allowMissingDependencies">Allow creating <see cref="ListItem"/>s that refer to list items or contents that don't exist in the system.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <returns>The created <see cref="ListItem"/>s.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        Task<IEnumerable<ListItem>> CreateFromObjectAsync(object content, string schemaId, bool allowMissingDependencies = false, CancellationToken cancellationToken = default(CancellationToken));
+        Task<IEnumerable<ListItem>> CreateFromObjectAsync(object content, Func<Type, string> schemaIdGenerator = null, bool allowMissingDependencies = false, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>Creates multiple <see cref="ListItem"/>s.</summary>
         /// <param name="createManyRequest">The create many request.</param>
