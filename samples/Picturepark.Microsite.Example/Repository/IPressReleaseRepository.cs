@@ -7,7 +7,7 @@ using Picturepark.SDK.V1.Contract;
 
 namespace Picturepark.Microsite.Example.Repository
 {
-	public interface IPressReleaseRepository : IRepository<ContentItem<PressRelease>>
+	public interface IPressReleaseRepository : IRepository<ContentItem<PressKits>>
 	{
 	}
 }

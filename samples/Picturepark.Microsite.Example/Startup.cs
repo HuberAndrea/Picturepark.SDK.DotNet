@@ -138,7 +138,7 @@ namespace Picturepark.Microsite.Example
             var serviceHelper = app.ApplicationServices.GetService<IServiceHelper>();
             var updateSchema = env.IsDevelopment();
 
-            serviceHelper.EnsureSchemaExists<PressRelease>(null, updateSchema).Wait();
+            //serviceHelper.EnsureSchemaExists<PressRelease>(null, updateSchema).Wait();
 
             app.UseMvc(routes =>
             {

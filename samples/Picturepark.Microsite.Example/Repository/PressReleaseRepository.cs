@@ -17,7 +17,7 @@ namespace Picturepark.Microsite.Example.Repository
             _client = client;
         }
 
-        public async Task<List<ContentItem<PressRelease>>> List(int start, int limit, string searchString)
+        public async Task<List<ContentItem<PressKits>>> List(int start, int limit, string searchString)
         {
             var searchResult = await _client.Content.SearchAsync(new ContentSearchRequest
             {
@@ -29,12 +29,12 @@ namespace Picturepark.Microsite.Example.Repository
                     Filters = new List<FilterBase>
                     {
                         // Limit to PressRelease content
-                        FilterBase.FromExpression<Content>(i => i.ContentSchemaId, nameof(PressRelease)),
+                        FilterBase.FromExpression<Content>(i => i.ContentSchemaId, nameof(PressKits)),
 
 						// Filter out future publications
 						new DateRangeFilter
                         {
-                            Field = "pressRelease.publishDate",
+                            Field = "pressKits.releaseDate",
                             Range = new DateRange
                             {
                                 To = "now"
@@ -44,7 +44,7 @@ namespace Picturepark.Microsite.Example.Repository
                 },
                 Sort = new List<SortInfo>
                 {
-                    new SortInfo { Field = "pressRelease.publishDate", Direction = SortDirection.Desc }
+                    new SortInfo { Field = "pressKits.releaseDate", Direction = SortDirection.Desc }
                 }
             });
 
@@ -59,23 +59,23 @@ namespace Picturepark.Microsite.Example.Repository
                 : new List<ContentDetail>();
 
             // Convert to C# poco
-            var pressPortals = contents.AsContentItems<PressRelease>().ToList();
+            var pressPortals = contents.AsContentItems<PressKits>().ToList();
 
             return pressPortals;
         }
 
-        public async Task<ContentItem<PressRelease>> Get(string id)
+        public async Task<ContentItem<PressKits>> Get(string id)
         {
             var content = await _client.Content.GetAsync(id, new[] { ContentResolveBehavior.Content, ContentResolveBehavior.Owner });
 
-            return content.AsContentItem<PressRelease>();
+            return content.AsContentItem<PressKits>();
         }
 
         public async Task<List<SearchResult>> Search(int start, int limit, string searchString)
         {
             var result = await List(start, limit, searchString);
 
-            return result.Select(i => new SearchResult { Id = i.Id, Title = i.Content.Headline.GetTranslation(), Description = i.Content.Teaser.GetTranslation() }).ToList();
+            return result.Select(i => new SearchResult { Id = i.Id, Title = i.Content.Headline.GetTranslation(), Description = i.Content.Lead.GetTranslation() }).ToList();
         }
     }
 }

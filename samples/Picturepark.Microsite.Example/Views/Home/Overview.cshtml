@@ -2,7 +2,7 @@
 @using Microsoft.AspNetCore.Mvc.Localization
 @using Picturepark.SDK.V1.Contract
 
-@model IEnumerable<ContentItem<PressRelease>>
+@model IEnumerable<ContentItem<PressKits>>
 @inject IViewLocalizer Localizer
 <!--
 <div class=" et_pb_row et_pb_row_0">
@@ -24,13 +24,13 @@
 
 							<div class="et_pb_image_container">
 								<a asp-area="" asp-controller="Home" asp-action="Detail" asp-route-id="@portal.Id" class="entry-featured-image-url">
-									<img src="/Home/ImageResized/@portal.Content.KeyVisual.TargetId?width=400&height=400" alt="The Value of Synonyms in Content Systems" width="400" height="250" />
+									<img src="/Home/ImageResized/@portal.Content.HeroImage.TargetId?width=400&height=400" alt="The Value of Synonyms in Content Systems" width="400" height="250" />
 								</a>
 							</div> <!-- .et_pb_image_container -->
 							<h2 class="entry-title"><a asp-area="" asp-controller="Home" asp-action="Detail" asp-route-id="@portal.Id">@portal.Content.Headline.GetTranslation()</a></h2>
 
 							<div class="post-content">
-								<p>@portal.Content.Teaser?.GetTranslation()</p>
+								<p>@portal.Content.Lead?.GetTranslation()</p>
 								<a asp-area="" asp-controller="Home" asp-action="Detail" asp-route-id="@portal.Id" class="more-link">@Localizer.GetString("Read more")</a>
 							</div>
 						</article>
