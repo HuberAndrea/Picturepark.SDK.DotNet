@@ -1,0 +1,47 @@
+﻿/*
+    This stylesheet contains all code which can easily be customised.
+    Examples: logo, main colors
+*/
+
+* { /*doesn't work yet (12.03.19)*/
+    font-family: 'Roboto', sans-serif !important;
+}
+
+#logo {
+    height: 95px;
+    width: 200px;
+    background-image: url("../media/images/logo-fofa.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#top-menu-nav a {
+    color: #000;
+}
+
+#top-menu-nav a:before {
+    background: #000 !important;
+}
+
+h2.catHead, .L3header h1.entry-title, .L2header h1.entry-title, .L1header h1.entry-title,
+.L1header .L1tag, .L1header .L1tag p,
+.L1header .L1tag a { /*intro text*/
+    color: #2c6836 !important;
+}
+
+
+
+.L1header:before { /*welcome / intro image*/
+    height: 400px;
+    background-image: url(../media/images/header-background.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /*flip image horizontally*/
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}

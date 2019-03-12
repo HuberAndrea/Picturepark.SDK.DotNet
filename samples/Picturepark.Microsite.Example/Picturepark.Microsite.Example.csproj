@@ -36,6 +36,9 @@
 	    <Generator>ResXFileCodeGenerator</Generator>
 	  </EmbeddedResource>
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Media\Images\" />
+	</ItemGroup>
 	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
 	  <Exec Command="dotnet bundle" />
 	</Target>

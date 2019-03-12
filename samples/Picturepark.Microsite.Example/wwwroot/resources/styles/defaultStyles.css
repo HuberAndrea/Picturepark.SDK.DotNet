@@ -1,0 +1,50 @@
+﻿/*HAS TO BE CORRECTED AT SOME POINT IN THE FUTURE*/
+*,
+.L1header .L1tag,
+.L1header .L1tag p,
+.et_pb_text h2, 
+.et_pb_post h2, 
+.et_pb_portfolio_item h2, 
+.et_pb_title_container h1 {
+    font-family: 'Roboto', sans-serif !important;
+}
+
+#et-main-area .et_pb_title_container h1.entry-title,
+#et-main-area > h1.entry-title { /*align intro title to the left side*/
+    text-align: left !important;
+}
+
+.L1header .et_pb_row { /*edit margin for intro title and text*/
+    margin: 0 0 0 50px;
+}
+#et-main-area .et_pb_title_container h1.entry-title, 
+#et-main-area > h1.entry-title{ /*font size for intro title*/
+    font-size: 28px !important
+}
+
+#logo {
+    height: 95px !important;
+    width: 200px !important;
+    max-height: initial !important;
+    max-width: initial !important;
+}
+
+.page-template-page-headerless #top-menu a {
+    color: #000 !important;
+}
+
+.page-template-page-headerless #main-header #top-menu li a:before {
+    background: #000 !important;
+}
+
+#top-menu > li#menu-item-wpml-ls-364-de:before { /*slash in language selection*/
+    color: #000;
+}
+
+.single #et_search_icon:before, .page-template-page-headerless #et_search_icon:before, .home #et_search_icon:before { /*magnifying glass in header*/
+    color: #000;
+}
+
+.L1header .L1tag a { /*intro text link underlines*/
+    text-decoration: underline !important;
+}

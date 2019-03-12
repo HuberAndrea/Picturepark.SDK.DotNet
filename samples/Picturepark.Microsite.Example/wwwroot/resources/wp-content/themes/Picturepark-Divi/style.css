@@ -1,3 +1,9 @@
+
+
+
+
+/*KOMMENTAR ANDREA: WIRD VERWENDET*/
+
 /* @override 
 	https://picturepark.com/wp-content/themes/Picturepark-Divi/style.css?ver=3.0.64
 	https://picturepark-wpengine.netdna-ssl.com/wp-content/themes/Picturepark-Divi/style.css?ver=3.0.64
@@ -1051,7 +1057,7 @@ div#left-area > h1.entry-title {
 div#et-main-area .et_pb_title_container h1.entry-title,
 div#et-main-area > h1.entry-title {
 	/*padding-top: 80px;*/
-	font-size: 36px!important;
+	/*font-size: 36px!important;*/
 	line-height: 120%;
 	text-align: center;
 	font-weight: 500;
@@ -1865,10 +1871,10 @@ header#main-header #logo {
 	color: #000000 !important;
 }
 
-.et_pb_svg_logo #logo {
+/*.et_pb_svg_logo #logo {
 	height: 45px !important;
 	width: 217px !important;
-}
+}*/
 
 header#main-header.et-fixed-header #logo  {
 	margin-top: 4px;
@@ -4434,12 +4440,12 @@ div.lgx-logo-item {
 		text-align: left;
 		font-size: larger;
 	}
-	#pplogo, .et_pb_svg_logo #logo {
+	/*#pplogo, .et_pb_svg_logo #logo {
 		height: 36px !important;
 		width: 300px !important;
 		max-height: 36px !important;
 		max-width: 300px !important;
-	}
+	}*/
 	.textSlider .soliloquy-html-content h2,
 	.textSlider .soliloquy-html-content p {
 		text-align: center;
@@ -5337,7 +5343,5 @@ body a.smallorange:hover, body a.bigorange:hover {
 	content: ' *';
 	color: #760407;
 }
-
-
 
 /* @end */
