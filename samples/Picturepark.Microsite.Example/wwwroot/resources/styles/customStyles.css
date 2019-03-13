@@ -45,3 +45,34 @@ h2.catHead, .L3header h1.entry-title, .L2header h1.entry-title, .L1header h1.ent
     filter: FlipH;
     -ms-filter: "FlipH";
 }
+
+.pageNavBtn {
+    background-color: #2c6836;
+    color: #fff;
+}
+
+.pageNr {
+    padding: 5px;
+    font-size: 17px;
+    color: #2c6836;
+}
+    .pageNr:hover {
+        border: 1px solid #2c6836;
+        background-color: #2c6836;
+        color: #fff;
+    }
+.pageActive {
+    border: 1px solid #2c6836;
+    background-color: #2c6836;
+    color: #fff;
+}
+
+/*needs to be adjusted in other CSS files*/
+.scrollHeader {
+    background: #fff !important;
+    box-shadow: 1px 1px 1px rgba(44,104,54,.7) !important;
+}
+
+#footerTopSection {
+    background-color: #2c6836;
+}

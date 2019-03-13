@@ -72,9 +72,10 @@
 
     <link href="~/resources/styles/defaultStyles.css" rel="stylesheet" />
     <link href="~/resources/styles/customStyles.css" rel="stylesheet" />
+    <script src="~/resources/functions/functions.js"></script>
 </head>
 <body class="page-template page-template-page-headerless page-template-page-headerless-php page page-parent archive category category-content-management-blog en et_button_no_icon et_pb_button_helper_class et_transparent_nav et_fullwidth_nav et_fixed_nav et_show_nav et_cover_background et_pb_gutter windows et_pb_gutters3 et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_pb_footer_columns1 et_header_style_left et_pb_svg_logo et_pb_pagebuilder_layout et_right_sidebar et_divi_theme unknown">
-    
+
     <div id="page-container">
         <header id="main-header" data-height-onload="120">
             <div class="container clearfix et_menu_container">
@@ -86,9 +87,17 @@
                     </a>
                 </div>
 
+
+
+
                 <div id="et-top-navigation" data-height="120" data-fixed-height="36">
+
+                    <a href="mailto:info@picturepark.com" id="contactBtn">
+                        <!--Contact Picturepark Button in Header-->
+                        Contact Picturepark
+                    </a>
                     <nav id="top-menu-nav">
-                        <ul id="top-menu" class="nav et_disable_top_tier">   
+                        <ul id="top-menu" class="nav et_disable_top_tier">
                             <li class="menu-item menu-item-type-post_type menu-item-object-page page_item @(route == "Home" ? "current_page_item": "") "><a asp-controller="Home" asp-action="Overview">News</a></li>
                             @if (User.Identity.IsAuthenticated)    /*check login function*/
                             {
@@ -99,7 +108,7 @@
                                 <li class="menu-item menu-item-type-post_type menu-item-object-page"><a asp-controller="Account" asp-action="Login">Login</a></li>
                             }
 
-                        <!-- Language selection -->
+                            <!-- Language selection -->
                             <li id="menu-item-wpml-ls-364-en"
                                 class="menu-item-language @(requestCulture.RequestCulture.UICulture.TwoLetterISOLanguageName == "en" ? "menu-item-language-current wpml-ls-current-language" : "") menu-item wpml-ls-slot-364 wpml-ls-item wpml-ls-item-en wpml-ls-menu-item wpml-ls-first-item menu-item-wpml-ls-364-en">
                                 <a title="En" asp-controller="Home" asp-action="SetLanguage" asp-route-returnUrl="@Context.Request.Path" asp-route-culture="en"><span class="wpml-ls-native">En</span></a>
@@ -111,12 +120,12 @@
                         </ul>
                     </nav>
 
-                <!--search icon, has no function whatsoever currently-->
+                    <!--search icon, has no function whatsoever currently-->
                     <div id="et_top_search">
                         <span id="et_search_icon"></span>
                     </div>
 
-                <!--mobile nav, has no function whatsoever currently-->
+                    <!--mobile nav, has no function whatsoever currently-->
                     <div id="et_mobile_nav_menu">
                         <div class="mobile_nav closed">
                             <span class="select_page">Select Page</span>
@@ -127,8 +136,7 @@
 
 
             </div> <!-- .container -->
-
-        <!--don't know yet what this is. is this the search function?-->
+            <!--don't know yet what this is. is this the search function?-->
             <div class="et_search_outer">
                 <div class="container et_search_form_container">
                     <form role="search" method="get" class="et-search-form" asp-controller="Search" asp-action="Index">
@@ -143,10 +151,9 @@
         <div id="et-main-area">
             <div id="main-content">
                 <article class="page type-page status-publish has-post-thumbnail hentry">
-                    <div class="entry-content"> <!-- entry content includes the header and welcome text and image -->
-
-
-                    <!--INTRO TEXT-->
+                    <div class="entry-content">
+                        <!-- entry content includes the header and welcome text and image -->
+                        <!--INTRO TEXT-->
                         <div class="et_pb_section L1header et_pb_section_0 et_pb_with_background et_section_regular">
                             <div class=" et_pb_row et_pb_row_0 et_pb_row_fullwidth">
                                 <div class="et_pb_column et_pb_column_2_3  et_pb_column_0">
@@ -192,63 +199,78 @@
 
             </div> <!-- #main-content -->
 
-            <SPAN CLASS="et_pb_scroll_top et-pb-icon"></SPAN>
+            <span class="et_pb_scroll_top et-pb-icon"></span>
 
-            <FOOTER ID="main-footer">
-                <div class="et_pb_section siteFooter et_pb_section_11 et_pb_with_background et_section_regular">
-                    <div class=" et_pb_row et_pb_row_12">
-                        <div class="et_pb_column et_pb_column_1_4  et_pb_column_23">
-                            <div class="et_pb_module et-waypoint et_pb_image et_pb_animation_off et_pb_image_0 et_always_center_on_mobile">
-                                <img src="https://picturepark-wpengine.netdna-ssl.com/wp-content/uploads/2017/05/Picturepark-Logo-white.svg" alt="" />
+            <footer id="main-footer">
+                <div id="footerTopSection"></div>
 
-                            </div>
-                        </div> <!-- .et_pb_column -->
-                        <div class="et_pb_column et_pb_column_3_4  et_pb_column_24">
-                            <div class="et_pb_code et_pb_module  et_pb_code_7">
-                                <div id="et-info"><a href="mailto:info@picturepark.com"><span id="et-info-email"> info@picturepark.com </span></a></div><ul class="et-social-icons">
-                                    <li class="et-social-icon et-social-twitter">
-                                        <a href="https://www.twitter.com/Picturepark" class="icon" target="_blank">
-                                            <span>Twitter</span>
-                                        </a>
-                                    </li>
-                                    <li class="et-social-icon et-social-facebook">
-                                        <a href="https://www.facebook.com/Picturepark" class="icon" target="_blank">
-                                            <span>Facebook</span>
-                                        </a>
-                                    </li>
-                                    <li class="et-social-icon et-social-linkedin">
-                                        <a href="http://www.linkedin.com/company/picturepark-digital-asset-management" class="icon" target="_blank">
-                                            <span>LinkedIn</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div> <!-- .et_pb_code -->
-                        </div> <!-- .et_pb_column -->
-                    </div> <!-- .et_pb_row -->
+                <div id="footerMiddleSection">
+                    <div class="et_pb_section siteFooter et_pb_section_11 et_pb_with_background et_section_regular">
+                        <div class=" et_pb_row et_pb_row_12">
+                            <div class="et_pb_column et_pb_column_1_4  et_pb_column_23">
+                                <div class="et_pb_module et-waypoint et_pb_image et_pb_animation_off et_pb_image_0 et_always_center_on_mobile">
+                                    <img src="https://picturepark-wpengine.netdna-ssl.com/wp-content/uploads/2017/05/Picturepark-Logo-white.svg" alt="" />
 
-                </div> <!-- .et_pb_section -->
-                <DIV ID="et-footer-nav">
-                    <DIV CLASS="container">
+                                </div>
+                            </div> <!-- .et_pb_column -->
+                            <div class="et_pb_column et_pb_column_3_4  et_pb_column_24">
+                                <div class="et_pb_code et_pb_module  et_pb_code_7">
+                                    <div id="et-info"><a href="mailto:info@picturepark.com"><span id="et-info-email"> info@picturepark.com </span></a></div><ul class="et-social-icons">
+                                        <li class="et-social-icon et-social-twitter">
+                                            <a href="https://www.twitter.com/Picturepark" class="icon" target="_blank">
+                                                <span>Twitter</span>
+                                            </a>
+                                        </li>
+                                        <li class="et-social-icon et-social-facebook">
+                                            <a href="https://www.facebook.com/Picturepark" class="icon" target="_blank">
+                                                <span>Facebook</span>
+                                            </a>
+                                        </li>
+                                        <li class="et-social-icon et-social-linkedin">
+                                            <a href="http://www.linkedin.com/company/picturepark-digital-asset-management" class="icon" target="_blank">
+                                                <span>LinkedIn</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div> <!-- .et_pb_code -->
+                            </div> <!-- .et_pb_column -->
+                        </div> <!-- .et_pb_row -->
+
+                    </div> <!-- .et_pb_section -->
+                </div>
+
+
+                <div id="et-footer-nav">
+                    <DIV class="container">
                         <ul id="menu-footer-menu" class="bottom-nav">
                             <li id="menu-item-8647" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8647"><a href="https://picturepark.com/company/picturepark-customer-support/">Support</a></li>
                             <li id="menu-item-6731" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6731"><a href="https://picturepark.com/software/">Software</a></li>
                             <li id="menu-item-6723" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6723"><a href="https://picturepark.com/digital-asset-management-case-study/">Case Studies</a></li>
                         </ul>
                     </DIV>
-                </DIV> <!-- #et-footer-nav -->
+                </div> <!-- #et-footer-nav -->
 
-                <DIV ID="footer-bottom">
-                    <DIV CLASS="container clearfix">
+                <div id="footer-bottom">
+                    <div class="container clearfix">
                         &copy; 2017 Vision Information Transaction AG
                         <span>|</span>
                         <a href="https://picturepark.com/company/about-picturepark/picturepark-agreements-privacy/">Privacy</a>
-                    </DIV>	<!-- .container -->
-                </DIV>
-            </FOOTER> <!-- #main-footer -->
+                    </div>	<!-- .container -->
+                </div>
+            </footer> <!-- #main-footer -->
         </div> <!-- #et-main-area -->
 
     </div> <!-- #page-container -->
     <div class="a2a_kit a2a_kit_size_48 a2a_floating_style a2a_vertical_style" style="left:0px;top:420px;"><a class="a2a_button_facebook" href="https://www.addtoany.com/add_to/facebook?linkurl=https%3A%2F%2Fpicturepark.com%2Fsolutions%2F&amp;linkname=Content%20Management%20Solutions" title="Facebook" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_twitter" href="https://www.addtoany.com/add_to/twitter?linkurl=https%3A%2F%2Fpicturepark.com%2Fsolutions%2F&amp;linkname=Content%20Management%20Solutions" title="Twitter" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_google_plus" href="https://www.addtoany.com/add_to/google_plus?linkurl=https%3A%2F%2Fpicturepark.com%2Fsolutions%2F&amp;linkname=Content%20Management%20Solutions" title="Google+" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_linkedin" href="https://www.addtoany.com/add_to/linkedin?linkurl=https%3A%2F%2Fpicturepark.com%2Fsolutions%2F&amp;linkname=Content%20Management%20Solutions" title="LinkedIn" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_xing" href="https://www.addtoany.com/add_to/xing?linkurl=https%3A%2F%2Fpicturepark.com%2Fsolutions%2F&amp;linkname=Content%20Management%20Solutions" title="XING" rel="nofollow noopener" target="_blank"></a><a class="a2a_dd addtoany_share_save" href="https://www.addtoany.com/share"></a></div><link rel="stylesheet" id="soliloquy-style-css-css" href="resources/wp-content/plugins/soliloquy/assets/css/soliloquy.css" type="text/css" media="all" />
 
+
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            jQuery('.mobile_menu_bar_toggle').click(function () {
+                jQuery('html').toggleClass('modal-open');
+                jQuery('body').toggleClass('modal-open');
+            });
+        });
+    </script>
 </body>
 </html>

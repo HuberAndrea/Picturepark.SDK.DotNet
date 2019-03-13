@@ -9,6 +9,20 @@
     font-family: 'Roboto', sans-serif !important;
 }
 
+*, p, li{
+    font-weight: 400;
+}
+
+#et-top-navigation{
+    text-transform: uppercase;
+}
+
+.et_header_style_left #et-top-navigation nav > ul > li > a,
+.et_header_style_split #et-top-navigation nav > ul > li > a,
+#top-menu > li#menu-item-wpml-ls-364-de:before { /*move links in header to middle / bottom of line - vertical-align doesn't work*/
+    margin-top: 15px;
+}
+
 #et-main-area .et_pb_title_container h1.entry-title,
 #et-main-area > h1.entry-title { /*align intro title to the left side*/
     text-align: left !important;
@@ -48,3 +62,85 @@
 .L1header .L1tag a { /*intro text link underlines*/
     text-decoration: underline !important;
 }
+
+#contactBtn {
+    position: relative;
+    float: left;
+    margin-right: 50px;
+    border-radius: 3px;
+    padding: 10px 20px;
+    background-color: #2c6836;
+    color: #fff;
+    font-weight: 400;
+}
+
+.et_pb_blog_grid .et_pb_post{
+    padding-bottom: 16px !important;
+}
+
+body.archive.category.category-content-management-blog .et_pb_blog_grid .et_pb_post{
+    min-height: 520px;
+}
+
+.et_pb_blog_grid .et_pb_image_container img {
+    max-height: 256px;
+    object-fit: cover;
+}
+
+.et_pb_blog_grid .post-content p {
+    -webkit-line-clamp: 4;
+}
+
+#page-container{
+    padding-bottom: 0 !important;
+}
+
+footer {
+    position: relative !important;
+    margin-top: 200px;
+}
+
+.siteFooter { /*should afterwards be changed to footerMiddleSection*/
+    background-color: #fff !important;
+}
+
+.pageNr {
+    display: inline;
+    margin-right: 16px !important;
+    cursor: pointer;
+}
+
+
+/*already editet or my own code*/
+#main-header {
+    background: transparent;
+    box-shadow: none;
+}
+
+#pageCount, #nextPage, #lastPage {
+    display: none;
+}
+
+#postArticles div {
+    width: 184px;
+    margin: auto;
+}
+
+.pageNavBtn {
+    margin-top: 24px !important;
+    border-radius: 3px;
+    padding: 16px 32px;
+    box-sizing: border-box;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.multiPageActive {
+    display: block !important;
+}
+
+#footerTopSection {
+    height: 150px;
+}
+

@@ -258,10 +258,6 @@ div.header-content {
 	padding: 0;
 }
 
-#main-header { 
-      box-shadow: 0 2px #EEEEEE!important; 
-}
-
 .fluid-width-video-wrapper {
 	box-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
 	border: 1px solid rgba(0, 0, 0, 0.15);
@@ -821,7 +817,6 @@ body #et_search_icon:before {
 /*.category-digital-asset-management-case-study #main-header,
 .category-content-management-blog-de #main-header,
 .category-content-management-blog #main-header,*/
-.page-template-page-headerless #main-header,
 .single-digital-asset-management-case-study #main-header,
 .single-digital-asset-management-case-studies #main-header,
 .parent-content-management-blog-de #main-header,

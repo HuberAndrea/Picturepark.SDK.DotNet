@@ -4,9 +4,13 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <Compile Remove="log\**" />
+	  <Compile Remove="Media\**" />
 	  <Content Remove="log\**" />
+	  <Content Remove="Media\**" />
 	  <EmbeddedResource Remove="log\**" />
+	  <EmbeddedResource Remove="Media\**" />
 	  <None Remove="log\**" />
+	  <None Remove="Media\**" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="Microsoft.AspNetCore.App" />
@@ -35,9 +39,6 @@
 	  <EmbeddedResource Update="Resources\_Layout.fr.resx">
 	    <Generator>ResXFileCodeGenerator</Generator>
 	  </EmbeddedResource>
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Media\Images\" />
 	</ItemGroup>
 	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
 	  <Exec Command="dotnet bundle" />
