@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    //translations - insert you're custom translations here
+    //translations - insert your custom translations here
 
     //header information
     var contactBtn = "Contact Picturepark";

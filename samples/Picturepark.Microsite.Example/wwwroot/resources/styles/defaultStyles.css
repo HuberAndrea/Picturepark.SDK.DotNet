@@ -223,13 +223,26 @@ ul#menu-footer-menu.bottom-nav {
     display: initial !important;
     top: -32px;
 }
+.et-search-field {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 500ms;
+}
 .searchActive .et-search-field {
+    visibility: initial;
+    opacity: 1;
     height: 48px;
     top: -32px;
     bottom: 0;
 }
+
+
 .externalSearchActive #et-top-navigation {
     margin-right: 210px;
+}
+
+#footer-bottom .container{
+    padding-left: 45px;
 }
 
 /*already editet or my own code*/

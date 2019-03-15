@@ -210,16 +210,26 @@ $(document).ready(function () {
 
 });
 
-//$(document).ready(function () {
-//    //search function helpers
-//    $("#et_search_icon").click(function () {
-//        $("#main-header").addClass("externalSearchActive", 500);
-//        console.log("search active");
+$(document).ready(function () {
+    $("#et_search_icon").click(function () { //move elements when opening search
+        $(".et-search-form").fadeIn(500); //delay in opening search field
+        $("#main-header").addClass("externalSearchActive", 500);
+
+        $(document).click(function (e) { //move elements when closing search
+            if ($(e.target).closest("#main-header").length === 0) {
+                $(".et_close_search_field").click();
+                $("#main-header").removeClass("externalSearchActive", 500);
+            }
+            else if (e.target === $(".et_close_search_field")[0]) {
+                $("#main-header").removeClass("externalSearchActive", 500);
+            }
+        });
+    });
+});
 
 
-//        $("body").not(".et-search-form, .et-search-field, .et_search_outer").click(function () {
-//            $("#main-header").removeClass("externalSearchActive", 500);
-//            console.log("search not active");
-//        });            
-//    });
-//});
+function hideDownloads() { //show donwloads only if any are available
+    if ($("#downloadWrapper").children(".thumb").length === 0) {
+        $("#downloadWrapper").hide();
+    }
+}

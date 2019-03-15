@@ -19,8 +19,8 @@
 			<div class="entry-content">
 				<div class="et_pb_column et_pb_column_4_4 et_pb_column_0">
 					<div class="et_pb_text et_pb_module et_pb_bg_layout_light et_pb_text_align_left  et_pb_text_0">
-						<div class="et_pb_text_inner">
-							<h1 class="entry-title">@Model.Content.Headline.GetTranslation()</h1>
+                        <div class="et_pb_text_inner">
+                            <h1 class="entry-title">@Model.Content.Headline.GetTranslation()</h1>
 
                             <div class="et_post_meta_wrapper">
                                 <!-- <h1 class="entry-title">The Value of Synonyms in Content Systems</h1> -->
@@ -28,19 +28,19 @@
                                 @*<p class="post-meta">By <span class="author vcard"><a href="#" title="Posts By @Model.Owner.FirstName @Model.Owner.LastName" rel="author">@Model.Owner.FirstName @Model.Owner.LastName</a></span><span class="metaBullet">•</span><span class="published">@Model.Content.ReleaseDate.ToShortDateString()</span></p>*@
                             </div> <!-- .et_post_meta_wrapper -->
 
-							<p class="leadP" style="margin-top: 20px; text-align:left">@Model.Content.Lead?.GetTranslation()</p>
-							<br />
+                            <p class="leadP" style="margin-top: 20px; text-align:left">@Model.Content.Lead?.GetTranslation()</p>
+                            <br />
 
-							<img src="/Home/ImageResized/@Model.Content.HeroImage.TargetId?width=750&height=600" />
-							<div class="et-box et-shadow"><div class="et-box-content" style="padding: 4px !important;"></div></div>
+                            <img src="/Home/ImageResized/@Model.Content.HeroImage.TargetId?width=750&height=600" />
+                            <div class="et-box et-shadow"><div class="et-box-content" style="padding: 4px !important;"></div></div>
 
 
-							<markdown>@Html.Raw(Model.Content.BodyText?.GetTranslation())</markdown>
+                            <markdown>@Html.Raw(Model.Content.BodyText?.GetTranslation())</markdown>
 
-							<div class="hr1" style="margin:40px 0 40px 0 !important;"></div>
+                            <div class="hr1" style="margin:40px 0 40px 0 !important;"></div>
 
-							<h4>Downloads</h4>
                             <div id="downloadWrapper">
+                                <h4>Downloads</h4>
                                 @foreach (var download in Model.Content.MediaDownloads)
                                 {
                                     <div class="col-lg-3 col-md-4 col-xs-6 thumb" style="height: 200px;">
@@ -54,6 +54,9 @@
                                     </div>
                                 }
                             </div>
+                            <script>
+                                hideDownloads();
+                            </script>
                         </div>
 					</div> <!-- .et_pb_text -->
 				</div> <!-- .et_pb_column -->
