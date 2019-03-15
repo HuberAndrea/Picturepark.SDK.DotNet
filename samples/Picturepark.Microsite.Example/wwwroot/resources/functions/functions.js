@@ -44,11 +44,13 @@ $(document).ready(function () { //set up paging function
     }
 });
 
+
+
 $(document).ready(function () { //paging function
     $(".pageNr").click(function () {
-        navPagesGlobal();
+        /*navPagesGlobal();*/
 
-        /*var divInnerText = $(this).text();
+        var divInnerText = $(this).text();
         $.each(page, function (index, value) {
             if (index == divInnerText) {
                 $(this).show();
@@ -56,8 +58,35 @@ $(document).ready(function () { //paging function
             else {
                 $(this).hide();
             }
-        });*/
+        });
 
+        /*var currentPage = parseInt($(".pageActive").text(), 10);
+        $.each(page, function (index, value) {
+            if (index == currentPage) {
+                $(this).show();
+            }
+            else {
+                $(this).hide();
+            }
+        });*/
+        var currentPageDiv = "#pageNr" + divInnerText;
+        $(".pageNr").removeClass("pageActive");
+        $(this).addClass("pageActive");
+
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+
+        if ($("#pageNr1").hasClass("pageActive")) {
+            $("#nextPage").addClass("multiPageActive");
+            $("#lastPage").removeClass("multiPageActive");
+        }
+        else if (page[targetPage.single - 1]) {
+            $("#nextPage").removeClass("multiPageActive");
+            $("#lastPage").addClass("multiPageActive");
+        }
+        else {
+            $("#nextPage").addClass("multiPageActive");
+            $("#lastPage").addClass("multiPageActive");
+        }
     });
 });
 
@@ -94,13 +123,107 @@ function navPagesGlobal() {
 }
 
 function showNextPage() {
-    var nextPage = currentPage.instance + 1;
-    console.log("The next page is page nr " + nextPage);
+    //find out what page is active
+    var divInnerText = $(".pageActive").text();
+    
+    //move to page = current page +1
+    var nextPage = parseInt(divInnerText, 10) + 1;
+
+    $(".pageNr").removeClass("pageActive");
+    $("#pageCount").find("#pageNr" + nextPage).addClass("pageActive");
+
+    $.each(page, function (index, value) {
+        if (index == nextPage) {
+            $(this).show();
+        }
+        else {
+            $(this).hide();
+        }
+    });
+
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+
+    if ($("#pageNr1").hasClass("pageActive")) {
+        $("#nextPage").addClass("multiPageActive");
+        $("#lastPage").removeClass("multiPageActive");
+    }
+    else if (page[targetPage.single - 1]) {
+        $("#nextPage").removeClass("multiPageActive");
+        $("#lastPage").addClass("multiPageActive");
+    }
+    else {
+        $("#nextPage").addClass("multiPageActive");
+        $("#lastPage").addClass("multiPageActive");
+    }
+
 }
 
 function showLastPage() {
-    var lastPage = currentPage.instance - 1;
-    console.log("The last page is page nr " + lastPage);
+    //find out what page is active
+    var divInnerText = $(".pageActive").text();
+
+    //move to page = current page +1
+    var lastPage = parseInt(divInnerText, 10) -1;
+
+    $(".pageNr").removeClass("pageActive");
+    $("#pageCount").find("#pageNr" + lastPage).addClass("pageActive");
+
+    $.each(page, function (index, value) {
+        if (index == lastPage) {
+            $(this).show();
+        }
+        else {
+            $(this).hide();
+        }
+    });
+
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+
+    if ($("#pageNr1").hasClass("pageActive")) {
+        $("#nextPage").addClass("multiPageActive");
+        $("#lastPage").removeClass("multiPageActive");
+    }
+    else if (page[targetPage.single - 1]) {
+        $("#nextPage").removeClass("multiPageActive");
+        $("#lastPage").addClass("multiPageActive");
+    }
+    else {
+        $("#nextPage").addClass("multiPageActive");
+        $("#lastPage").addClass("multiPageActive");
+    }
 }
 /*--------ARTICLE OVERFLOW HANDLER START-----------*/
 
+
+$(document).ready(function () {
+    $("#et_search_icon").click(function () {
+        $(".et_search_outer").addClass("searchActive");
+
+        $(".et_close_search_field").click(function () {
+            $(".et_search_outer").removeClass("searchActive");
+        });
+    });
+
+    $(".entry-title").click(function () {
+        $(".et_search_outer").removeClass("searchActive");
+    });
+
+});
+
+//$(document).ready(function () {
+//    //search function helpers
+//    $("#et_search_icon").click(function () {
+//        $("#main-header").addClass("externalSearchActive", 500);
+//        console.log("search active");
+
+
+//        $("body").not(".et-search-form, .et-search-field, .et_search_outer").click(function () {
+//            $("#main-header").removeClass("externalSearchActive", 500);
+//            console.log("search not active");
+//        });            
+//    });
+
+    
+
+
+});

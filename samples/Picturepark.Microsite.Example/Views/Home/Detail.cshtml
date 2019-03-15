@@ -6,7 +6,12 @@
 
 @model ContentItem<PressKits>
 
-<div class="breadcrumbsBox"><div class="breadcrumbs"><a asp-controller="Home" asp-action="Overview"><span class="separator">#</span> @Localizer.GetString("Back to Content Management Blog")</a></div></div>
+<div class="breadcrumbsBox">
+    <div class="breadcrumbs">
+        <a asp-controller="Home" asp-action="Overview">
+        </a>
+    </div>
+</div>
 
 <div id="content-area" class="clearfix">
 	<div id="left-area">
@@ -17,10 +22,11 @@
 						<div class="et_pb_text_inner">
 							<h1 class="entry-title">@Model.Content.Headline.GetTranslation()</h1>
 
-							<div class="et_post_meta_wrapper">
-								<!-- <h1 class="entry-title">The Value of Synonyms in Content Systems</h1> -->
-								<p class="post-meta">By <span class="author vcard"><a href="#" title="Posts By @Model.Owner.FirstName @Model.Owner.LastName" rel="author">@Model.Owner.FirstName @Model.Owner.LastName</a></span><span class="metaBullet">•</span><span class="published">@Model.Content.ReleaseDate.ToShortDateString()</span></p>
-							</div> <!-- .et_post_meta_wrapper -->
+                            <div class="et_post_meta_wrapper">
+                                <!-- <h1 class="entry-title">The Value of Synonyms in Content Systems</h1> -->
+                                <p class="post-meta"><span class="author vcard"><a href="#" title="Posts By @Model.Owner.FirstName @Model.Owner.LastName" rel="author">@Model.Owner.FirstName @Model.Owner.LastName</a></span><span class="metaBullet">•</span><span class="published">@Model.Content.ReleaseDate.ToShortDateString()</span></p>
+                                @*<p class="post-meta">By <span class="author vcard"><a href="#" title="Posts By @Model.Owner.FirstName @Model.Owner.LastName" rel="author">@Model.Owner.FirstName @Model.Owner.LastName</a></span><span class="metaBullet">•</span><span class="published">@Model.Content.ReleaseDate.ToShortDateString()</span></p>*@
+                            </div> <!-- .et_post_meta_wrapper -->
 
 							<p class="leadP" style="margin-top: 20px; text-align:left">@Model.Content.Lead?.GetTranslation()</p>
 							<br />
@@ -34,18 +40,21 @@
 							<div class="hr1" style="margin:40px 0 40px 0 !important;"></div>
 
 							<h4>Downloads</h4>
-							@foreach (var download in Model.Content.MediaDownloads)
-							{
-								<div class="col-lg-3 col-md-4 col-xs-6 thumb" style="height: 200px;">
-									<div class="thumbnail">
-										<a asp-area="" asp-controller="Home" asp-action="Embed" asp-route-id="@download.TargetId">
-											<img class="img-responsive" src="/Home/Thumbnail/@download.TargetId" alt="" style="max-height: 160px;">
-											<p style="padding: 6px;">@download.LegendTitle?.GetTranslation()</p>
-										</a>
-									</div>
-								</div>
-							}
-						</div>
+                            <div id="downloadWrapper">
+                                @foreach (var download in Model.Content.MediaDownloads)
+                                {
+                                    <div class="col-lg-3 col-md-4 col-xs-6 thumb" style="height: 200px;">
+                                        <div class="thumbnail">
+                                            <a asp-area="" asp-controller="Home" asp-action="Embed" asp-route-id="@download.TargetId">
+                                                <i class="material-icons">cloud_download</i>
+                                                <img class="img-responsive" src="/Home/Thumbnail/@download.TargetId" alt="" style="max-height: 160px;">
+                                                <p style="padding: 6px;">@download.LegendTitle?.GetTranslation()</p>
+                                            </a>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
 					</div> <!-- .et_pb_text -->
 				</div> <!-- .et_pb_column -->
 

@@ -20,9 +20,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <base href="/" />
-    <title>Test Andrea</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+    <title>FOFA Press Portal</title>
 
 
 
@@ -51,10 +49,10 @@
 
 
     <!--Bootstrap files below this comment-->
-    @*<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>*@
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 
 
@@ -70,18 +68,63 @@
         </script>*@
 
 
+    @*<script>
+            jQuery(function ($) {
+                var offset = 40;
+                var $header = $('#main-header');
+                // Override the addClass to prevent fixed header class from being added before offset reached
+                var addclass = $.fn.addClass;
+                $.fn.addClass = function () {
+                    var result = addclass.apply(this, arguments);
+                    if ($(window).scrollTop() < offset) {
+                        $header.removeClass('et-fixed-header');
+                    }
+                    return result;
+                }
+                // Remove fixed header class initially
+                $header.removeClass('et-fixed-header');
+                // Create waypoint which adds / removes fixed header class when offset reached
+                $('body').waypoint({
+                    handler: function (d) {
+                        $header.toggleClass('et-fixed-header', (d === 'down'));
+                    },
+                    offset: -offset
+                });
+            });
+        </script>*@
+
+    @*<link rel="stylesheet" id="et-core-unified-cached-inline-styles" href="~/resources/wp-content/plugins/et-core-unified/et-core-unified.min.css" onerror="et_core_page_resource_fallback(this, true)" onload="et_core_page_resource_fallback(this)"/>*@
+
+    @*<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">*@
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+
     <link href="~/resources/styles/defaultStyles.css" rel="stylesheet" />
     <link href="~/resources/styles/customStyles.css" rel="stylesheet" />
     <script src="~/resources/functions/functions.js"></script>
+
+    @if (requestCulture.RequestCulture.UICulture.TwoLetterISOLanguageName == "en")
+    {
+        <script src="~/resourceTranslations/langEN.js"></script>
+    }
+    else if (requestCulture.RequestCulture.UICulture.TwoLetterISOLanguageName == "de")
+    {
+        <script src="~/resourceTranslations/langDE.js"></script>
+    }
+    else
+    {
+        <script src="~/resourceTranslations/langEN.js"></script>
+    }
 </head>
 <body class="page-template page-template-page-headerless page-template-page-headerless-php page page-parent archive category category-content-management-blog en et_button_no_icon et_pb_button_helper_class et_transparent_nav et_fullwidth_nav et_fixed_nav et_show_nav et_cover_background et_pb_gutter windows et_pb_gutters3 et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_pb_footer_columns1 et_header_style_left et_pb_svg_logo et_pb_pagebuilder_layout et_right_sidebar et_divi_theme unknown">
-
     <div id="page-container">
         <header id="main-header" data-height-onload="120">
             <div class="container clearfix et_menu_container">
                 <div class="logo_container">
                     <span class="logo_helper"></span>
-                    <a href="https://picturepark.com/">
+                    <a href="/">
                         <div id="logo" class="style-svg"></div>
                         @*<img src="~/resources/Media/Images/Logo-FOFA.png" alt="Fine Organic Foods Association" class="style-svg" />*@
                     </a>
@@ -92,10 +135,7 @@
 
                 <div id="et-top-navigation" data-height="120" data-fixed-height="36">
 
-                    <a href="mailto:info@picturepark.com" id="contactBtn">
-                        <!--Contact Picturepark Button in Header-->
-                        Contact Picturepark
-                    </a>
+                    <a href="mailto:info@picturepark.com" id="contactBtn"></a>
                     <nav id="top-menu-nav">
                         <ul id="top-menu" class="nav et_disable_top_tier">
                             <li class="menu-item menu-item-type-post_type menu-item-object-page page_item @(route == "Home" ? "current_page_item": "") "><a asp-controller="Home" asp-action="Overview">News</a></li>
@@ -112,6 +152,7 @@
                             <li id="menu-item-wpml-ls-364-en"
                                 class="menu-item-language @(requestCulture.RequestCulture.UICulture.TwoLetterISOLanguageName == "en" ? "menu-item-language-current wpml-ls-current-language" : "") menu-item wpml-ls-slot-364 wpml-ls-item wpml-ls-item-en wpml-ls-menu-item wpml-ls-first-item menu-item-wpml-ls-364-en">
                                 <a title="En" asp-controller="Home" asp-action="SetLanguage" asp-route-returnUrl="@Context.Request.Path" asp-route-culture="en"><span class="wpml-ls-native">En</span></a>
+
                             </li>
                             <li id="menu-item-wpml-ls-364-de"
                                 class="menu-item-language @(requestCulture.RequestCulture.UICulture.TwoLetterISOLanguageName == "de" ? "menu-item-language-current wpml-ls-current-language" : "") menu-item wpml-ls-slot-364 wpml-ls-item wpml-ls-item-de wpml-ls-menu-item wpml-ls-last-item menu-item-wpml-ls-364-de">
@@ -138,9 +179,9 @@
             </div> <!-- .container -->
             <!--don't know yet what this is. is this the search function?-->
             <div class="et_search_outer">
-                <div class="container et_search_form_container">
+                <div class="container et_search_form_container et_pb_search_visible et_pb_no_animation">
                     <form role="search" method="get" class="et-search-form" asp-controller="Search" asp-action="Index">
-                        <input type="search" class="et-search-field" placeholder="Search &hellip;" value="" name="search" title="Search for:" />
+                        <input type="search" class="et-search-field"  value="" name="search" title="Search for:" />
                     </form>
                     <span class="et_close_search_field"></span>
                 </div>
@@ -159,12 +200,12 @@
                                 <div class="et_pb_column et_pb_column_2_3  et_pb_column_0">
                                     <div class="et_pb_module et_pb_post_title   et_pb_post_title_0 et_pb_bg_layout_light">
                                         <div class="et_pb_title_container">
-                                            <h1 class="entry-title">You are watching a sample demo of a Press Kits microsite of <br /> the Picturepark Content Platform.</h1>
+                                            <h1 class="entry-title"></h1>
                                         </div>
                                     </div>
                                     <div class="et_pb_text et_pb_module et_pb_bg_layout_dark et_pb_text_align_left L1tag et_pb_text_0">
                                         <div class="et_pb_text_inner">
-                                            <p>Other samples are available - <a target="_blank" href="https://picturepark.com/">please click here.</a></p>
+                                            
                                         </div>
                                     </div> <!-- .et_pb_text -->
                                 </div> <!-- .et_pb_column -->
@@ -209,7 +250,8 @@
                         <div class=" et_pb_row et_pb_row_12">
                             <div class="et_pb_column et_pb_column_1_4  et_pb_column_23">
                                 <div class="et_pb_module et-waypoint et_pb_image et_pb_animation_off et_pb_image_0 et_always_center_on_mobile">
-                                    <img src="https://picturepark-wpengine.netdna-ssl.com/wp-content/uploads/2017/05/Picturepark-Logo-white.svg" alt="" />
+
+                                    <div id="footerImg"></div>
 
                                 </div>
                             </div> <!-- .et_pb_column -->
@@ -243,18 +285,20 @@
                 <div id="et-footer-nav">
                     <DIV class="container">
                         <ul id="menu-footer-menu" class="bottom-nav">
-                            <li id="menu-item-8647" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8647"><a href="https://picturepark.com/company/picturepark-customer-support/">Support</a></li>
-                            <li id="menu-item-6731" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6731"><a href="https://picturepark.com/software/">Software</a></li>
-                            <li id="menu-item-6723" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6723"><a href="https://picturepark.com/digital-asset-management-case-study/">Case Studies</a></li>
+                            <li id="menu-item-8647" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8647"><a href="https://picturepark.com" />picturepark.com</a></li>
+                            <li id="menu-item-6731" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-6731"><a href="https://picturepark.com/company/picturepark-customer-support/">Support</a></li>
+                            <li id="menu-item-6723" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6723"><a href="mailto:info@picturepark.com"></a></li>
                         </ul>
                     </DIV>
                 </div> <!-- #et-footer-nav -->
 
                 <div id="footer-bottom">
                     <div class="container clearfix">
-                        &copy; 2017 Vision Information Transaction AG
+                        &copy; 2019 Vision Information Transaction AG
                         <span>|</span>
-                        <a href="https://picturepark.com/company/about-picturepark/picturepark-agreements-privacy/">Privacy</a>
+                        <a id="privacyLink" target="_blank" href="https://picturepark.com/terms/privacy/"></a>
+                        <span>|</span>    
+                        <a id="termsOfUseLink" target="_blank" href="https://picturepark.com/terms/aup/"></a>
                     </div>	<!-- .container -->
                 </div>
             </footer> <!-- #main-footer -->

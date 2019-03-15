@@ -9,7 +9,35 @@
     font-family: 'Roboto', sans-serif !important;
 }
 
-*, p, li{
+.material-icons {
+    font-family: 'Material Icons' !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    font-size: 24px !important;
+    line-height: 1 !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+    display: inline-block !important;
+    white-space: nowrap !important;
+    word-wrap: normal !important;
+    direction: ltr !important;
+    -webkit-font-feature-settings: 'liga' !important;
+    -webkit-font-smoothing: antialiased !important;
+}
+
+#downloadWrapper .material-icons {
+    display: none !important;
+    position: absolute;
+    margin-left: 24px;
+    z-index: 100;
+    font-size: 104px !important;
+    opacity: .8;
+}
+#downloadWrapper .thumbnail:hover .material-icons {
+    display: block !important;
+}
+
+*, p, li {
     font-weight: 400;
 }
 
@@ -83,7 +111,7 @@ body.archive.category.category-content-management-blog .et_pb_blog_grid .et_pb_p
 }
 
 .et_pb_blog_grid .et_pb_image_container img {
-    max-height: 256px;
+    height: 192px;
     object-fit: cover;
 }
 
@@ -110,6 +138,99 @@ footer {
     cursor: pointer;
 }
 
+#footerMiddleSection .siteFooter .et_pb_column_3_4 {
+    margin-top: 56px;
+}
+
+.siteFooter .et_pb_row{
+    border: none;
+}
+
+#et-footer-nav .container {
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+ul#menu-footer-menu.bottom-nav {
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+}
+
+    ul#menu-footer-menu.bottom-nav a,
+    ul#menu-footer-menu.bottom-nav li:after {
+        color: #fff;
+    }
+
+#footer-bottom,
+#footer-bottom a,
+#footer-bottom div.container span {
+    color: #fff;
+}
+.searchActive .et_search_form_container {
+    height: 134px;
+}
+
+    .searchActive .et_search_form_container form{
+        max-width: 311px;
+    }
+
+
+.et-search-field{
+    background: #fff !important;
+}
+
+#content-area{
+    margin-top: -100px !important;
+}
+.breadcrumbsBox{
+    position: relative;
+    z-index: 100;
+}
+.breadcrumbs a,
+.breadcrumbs .separator{
+    text-decoration: none;
+}
+
+#downloadWrapper div{
+    display: inline;
+}
+#downloadWrapper .thumbnail {
+    height: 200px;
+}
+#downloadWrapper .thumbnail:hover img{
+    background-color: red;
+}
+#downloadWrapper img {
+    position: relative;
+    float: left;
+    width: 150px;
+    object-fit: cover;
+}
+#downloadWrapper p {
+    position: relative;
+    height: 120px;
+    left: 65px;
+    text-align: left;
+}
+
+#et_top_search{
+    margin-top: 10px;
+}
+.et_close_search_field {
+    display: none !important;
+}
+.searchActive .et_close_search_field{
+    display: initial !important;
+    top: -32px;
+}
+.searchActive .et-search-field {
+    height: 48px;
+    top: -32px;
+    bottom: 0;
+}
+.externalSearchActive #et-top-navigation {
+    margin-right: 210px;
+}
 
 /*already editet or my own code*/
 #main-header {
@@ -119,6 +240,16 @@ footer {
 
 #pageCount, #nextPage, #lastPage {
     display: none;
+}
+
+.lastPageActive{
+    float: left;
+    margin-left: -100px !important;
+}
+
+.nextPageActive{
+    float: right;
+    margin-right: -100px !important;
 }
 
 #postArticles div {

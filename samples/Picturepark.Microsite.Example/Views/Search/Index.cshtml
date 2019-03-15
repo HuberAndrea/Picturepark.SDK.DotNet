@@ -2,7 +2,7 @@
 		
 <div class=" et_pb_row et_pb_row_1">
 	<div class="et_pb_column et_pb_column_4_4  et_pb_column_1">
-		<h4>Search results for "@Model.SearchString"</h4>
+		<h4 id="searchResultsTerm">"@Model.SearchString"</h4>
 		<br /><br />
 		@foreach(var result in Model.SearchResults)
 		{
@@ -12,7 +12,7 @@
 
 		@if (!Model.SearchResults.Any())
 		{
-			<p>No search results</p>
+			<p id="searchNoResults"></p>
 		}
 	</div>
 </div>
