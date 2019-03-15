@@ -222,8 +222,4 @@ $(document).ready(function () {
 //            console.log("search not active");
 //        });            
 //    });
-
-    
-
-
-});
+//});
