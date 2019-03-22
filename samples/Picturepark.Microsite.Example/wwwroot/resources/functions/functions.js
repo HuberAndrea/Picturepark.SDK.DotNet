@@ -12,10 +12,11 @@ $(window).scroll(function () {
 
 
 /*--------ARTICLE OVERFLOW HANDLER START-----------*/
-//define global vars
-var articleCount = {}; 
+var articleCount = {}; //define global vars
 var targetPage = {};
 var page = {}; //create global var for page count in for loop
+var divInnerText = {};
+var currentPage = {};
 
 $(document).ready(function () { //set up paging function
     articleCount.postNumber = $(".articlePreview").length; //fill global var
@@ -24,9 +25,7 @@ $(document).ready(function () { //set up paging function
         $(".articlePreview:gt(8)").hide(); //hide overflow articles
         $("#pageCount").addClass("multiPageActive"); //show older entries button
     
-
-        //variables required for the loop
-        var divideByNine = Math.ceil(articleCount.postNumber / 9); //count how many pages need to be displayed
+        var divideByNine = Math.ceil(articleCount.postNumber / 9); //variables required for the loop
         var para1 = 0;
         var para2 = 9;
         targetPage.single = 1;
@@ -41,6 +40,18 @@ $(document).ready(function () { //set up paging function
 
         $("#pageNr1").addClass("pageActive"); //default active page
         $("#nextPage").addClass("multiPageActive");
+
+        //cut overload articles and replace with ...
+        var pageCount = $(".pageNr");
+        if (pageCount.length > 4) {
+            console.log("über 4");
+
+            var pageOverload = pageCount.toArray().length - 3;
+            pageOverload = pageCount.slice(pageOverload);
+            console.log(pageOverload);
+            pageOverload.hide();
+            $("#pageCount").append("<div id='pageOverload'> ...</div>");
+        }
     }
 });
 
@@ -48,28 +59,9 @@ $(document).ready(function () { //set up paging function
 
 $(document).ready(function () { //paging function
     $(".pageNr").click(function () {
-        /*navPagesGlobal();*/
+        divInnerText.global = $(this).text();
+        globalF1();
 
-        var divInnerText = $(this).text();
-        $.each(page, function (index, value) {
-            if (index == divInnerText) {
-                $(this).show();
-            }
-            else {
-                $(this).hide();
-            }
-        });
-
-        /*var currentPage = parseInt($(".pageActive").text(), 10);
-        $.each(page, function (index, value) {
-            if (index == currentPage) {
-                $(this).show();
-            }
-            else {
-                $(this).hide();
-            }
-        });*/
-        var currentPageDiv = "#pageNr" + divInnerText;
         $(".pageNr").removeClass("pageActive");
         $(this).addClass("pageActive");
 
@@ -90,16 +82,19 @@ $(document).ready(function () { //paging function
     });
 });
 
-function navPagesGlobal() {
-    var currentPage = parseInt($(".pageActive").text(), 10);
+function globalF1() {
     $.each(page, function (index, value) {
-        if (index == currentPage) {
+        if (index == divInnerText.global) {
             $(this).show();
         }
         else {
             $(this).hide();
         }
     });
+}
+
+function navPagesGlobal() {
+    var currentPage = parseInt($(".pageActive").text(), 10);
 
     var currentPageDiv = "#pageNr" + currentPage;
     console.log(currentPageDiv);
@@ -192,7 +187,7 @@ function showLastPage() {
         $("#lastPage").addClass("multiPageActive");
     }
 }
-/*--------ARTICLE OVERFLOW HANDLER START-----------*/
+/*--------ARTICLE OVERFLOW HANDLER END-----------*/
 
 
 $(document).ready(function () {
@@ -213,8 +208,12 @@ $(document).ready(function () {
 $(document).ready(function () {
     $("#et_search_icon").click(function () { //move elements when opening search
         $(".et-search-form").fadeIn(500); //delay in opening search field
-        $("#main-header").addClass("externalSearchActive", 500);
 
+        if ($(window).width() > 1085) {
+            $("#main-header").addClass("externalSearchActive", 500);
+        }
+        $(".et-search-field").focus();
+        
         $(document).click(function (e) { //move elements when closing search
             if ($(e.target).closest("#main-header").length === 0) {
                 $(".et_close_search_field").click();
@@ -232,4 +231,59 @@ function hideDownloads() { //show donwloads only if any are available
     if ($("#downloadWrapper").children(".thumb").length === 0) {
         $("#downloadWrapper").hide();
     }
+}
+
+
+//mobile nav toggle function
+function activateMobileNav() {
+    if ($(window).width() < 1085) {
+        //fill mobile nav with nav items
+        $("#et_top_search").appendTo("#mobileNavItems").addClass("mobileNavActiveItems");
+        $(".et_search_outer").appendTo("#et_top_search").addClass("mobileNavActiveItems");
+        $("#top-menu-nav").appendTo("#mobileNavItems").addClass("mobileNavActiveItems");
+        $("#moreInfo").appendTo("#mobileNavItems").addClass("mobileNavActiveItems");
+
+
+        $(".mobile_menu_bar_toggle").click(function () {
+            //mobile nav icon
+            $(".mobile_nav").toggleClass("closed");
+            $(".mobile_nav").toggleClass("opened");
+
+            //display mobile nav and its components
+            $("#mobileNavItems").toggleClass("mobileNavSleeping");
+            $("#mobileNavItems").toggleClass("mobileNavActive");
+            $(".logo_container").toggleClass("mobileNavActiveItems");
+            $(".a2a_kit ").toggleClass("mobileNavActiveItems"); //hide social sharing links
+        });
+    }
+    else {
+        $("#moreInfo").appendTo("#et-top-navigation").removeClass("mobileNavActiveItems");
+        $("#et_top_search").appendTo("#et-top-navigation").removeClass("mobileNavActiveItems");
+        $(".et_search_outer").appendTo("#main-header").removeClass("mobileNavActiveItems");
+        $("#top-menu-nav").appendTo("#et-top-navigation").removeClass("mobileNavActiveItems");
+    }
+}
+$(document).ready(function () {
+    activateMobileNav();
+});
+$(window).resize(function () {
+    activateMobileNav();
+});
+
+function moreInfoOpen() {
+    $("#moreInfoTooltip").toggleClass("moreInfoActive");
+
+    $(window).scroll(function () { //close tooltip on scroll
+        var ScrollTop = parseInt($(window).scrollTop());
+
+        if (ScrollTop > 350) {
+            $("#moreInfoTooltip").removeClass("moreInfoActive");
+        }
+    });
+
+    $(document).click(function (e) { //close tooltip on click anywhere
+        if ($(e.target).closest("#moreInfo").length === 0) {
+            $("#moreInfoTooltip").removeClass("moreInfoActive");
+        }
+    });
 }

@@ -8,8 +8,7 @@
 
 <div class="breadcrumbsBox">
     <div class="breadcrumbs">
-        <a asp-controller="Home" asp-action="Overview">
-        </a>
+        <a asp-controller="Home" asp-action="Overview"><span class='separator'>#</span> @Localizer.GetString("Back to Overview")</a>
     </div>
 </div>
 
@@ -24,7 +23,7 @@
 
                             <div class="et_post_meta_wrapper">
                                 <!-- <h1 class="entry-title">The Value of Synonyms in Content Systems</h1> -->
-                                <p class="post-meta"><span class="author vcard"><a href="#" title="Posts By @Model.Owner.FirstName @Model.Owner.LastName" rel="author">@Model.Owner.FirstName @Model.Owner.LastName</a></span><span class="metaBullet">•</span><span class="published">@Model.Content.ReleaseDate.ToShortDateString()</span></p>
+                                <p class="post-meta"><span class="author vcard">@Localizer.GetString("By") <a href="#" title="Posts By @Model.Owner.FirstName @Model.Owner.LastName" rel="author">@Model.Owner.FirstName @Model.Owner.LastName</a></span><span class="metaBullet">•</span><span class="published">@Model.Content.ReleaseDate.ToShortDateString()</span></p>
                                 @*<p class="post-meta">By <span class="author vcard"><a href="#" title="Posts By @Model.Owner.FirstName @Model.Owner.LastName" rel="author">@Model.Owner.FirstName @Model.Owner.LastName</a></span><span class="metaBullet">•</span><span class="published">@Model.Content.ReleaseDate.ToShortDateString()</span></p>*@
                             </div> <!-- .et_post_meta_wrapper -->
 
@@ -43,7 +42,9 @@
                                 <h4>Downloads</h4>
                                 @foreach (var download in Model.Content.MediaDownloads)
                                 {
-                                    <div class="col-lg-3 col-md-4 col-xs-6 thumb" style="height: 200px;">
+                                    
+                                <div class="col-lg-3 col-md-4 col-xs-6 thumb" style="height: 200px;">
+                                    <div class="downloadItem">
                                         <div class="thumbnail">
                                             <a asp-area="" asp-controller="Home" asp-action="Embed" asp-route-id="@download.TargetId">
                                                 <i class="material-icons">cloud_download</i>
@@ -52,6 +53,7 @@
                                             </a>
                                         </div>
                                     </div>
+                                </div>
                                 }
                             </div>
                             <script>

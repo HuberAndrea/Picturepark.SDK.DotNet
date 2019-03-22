@@ -117,10 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Press portal" xml:space="preserve">
-    <value>Pressez le portail</value>
+  <data name="More info about this demo" xml:space="preserve">
+    <value>Mehr über diese Demo</value>
   </data>
-  <data name="Use this area to provide additional information." xml:space="preserve">
-    <value>Utilisez cette zone pour fournir des informations supplémentaires.</value>
+  <data name="Other samples are available -" xml:space="preserve">
+    <value>Weitere Beispiele sind verfügbar - </value>
+  </data>
+  <data name="please click here." xml:space="preserve">
+    <value>klicken Sie hier.</value>
+  </data>
+  <data name="Privacy" xml:space="preserve">
+    <value>Datenschutzbedingungen</value>
+  </data>
+  <data name="Search..." xml:space="preserve">
+    <value>Suchen...</value>
+  </data>
+  <data name="Terms of use" xml:space="preserve">
+    <value>Nutzungsbedingungen</value>
+  </data>
+  <data name="You are watching a sample demo of a Press Kits microsite of the Picturepark Content Platform." xml:space="preserve">
+    <value>Sie sehen eine Demo einer Presseportal Microsite der Picturepark Content Platform.</value>
+  </data>
+  <data name="Contact Picturepark" xml:space="preserve">
+    <value>Picturepark kontaktieren</value>
+  </data>
+  <data name="Explore other components of this demo." xml:space="preserve">
+    <value>Entdecken Sie weitere Teile der Demo.</value>
+  </data>
+  <data name="This is a slightly customized microsite of the Picturepark SDK - part of our online demo." xml:space="preserve">
+    <value>Dies ist eine leicht angepasste Microsite des Picturepark SDKs - ein Teil unserer Online Demo.</value>
+  </data>
+  <data name="You can play around with your limited read-only access which simulates access of FOFA members." xml:space="preserve">
+    <value>Sie können Funktionen auf dieser Seite mit den limitierten Leserechten eines FOFA-Mitglieds ausprobieren.</value>
   </data>
 </root>
