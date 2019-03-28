@@ -1,5 +1,4 @@
-﻿/*HAS TO BE CORRECTED AT SOME POINT IN THE FUTURE*/
-*,
+﻿*,
 .L1header .L1tag,
 .L1header .L1tag p,
 .et_pb_text h2, 
@@ -7,6 +6,7 @@
 .et_pb_portfolio_item h2, 
 .et_pb_title_container h1 {
     font-family: 'Roboto', sans-serif !important;
+    font-weight: 400 !important;
 }
 
 .material-icons {
@@ -25,6 +25,11 @@
     -webkit-font-smoothing: antialiased !important;
 }
 
+#logo {
+    max-height: initial !important;
+    max-width: initial !important;
+}
+
 #downloadWrapper .material-icons {
     opacity: 0;
     position: absolute;
@@ -40,14 +45,7 @@
     width: 100%;
     height: 150px;
     margin-bottom: 40px;
-    box-shadow: 4px 5px 4px -2px rgba(44,104,54, .5);
 }
-
-    #downloadWrapper .downloadItem:hover {
-        background-color: rgba(50,50,50, .1);
-        box-shadow: 4px 5px 4px -2px rgba(75,75,75, .7);
-        transition: background-color 500ms, box-shadow 250ms;
-    }
 
 #downloadWrapper .thumbnail:hover .material-icons {
     opacity: 1;
@@ -58,8 +56,6 @@
     opacity: .3;
     transition: opacity 400ms;
 }
-
-
 
 *, p, li {
     font-weight: 400;
@@ -92,31 +88,27 @@
     font-size: 28px !important
 }
 
-#logo {
-    height: 95px !important;
-    width: 200px !important;
-    max-height: initial !important;
-    max-width: initial !important;
-}
-
 #top-menu{
     height: 40px;
-}
-
-.page-template-page-headerless #top-menu a {
-    color: #000 !important;
 }
 
 .page-template-page-headerless #main-header #top-menu li a:before {
     background: #000 !important;
 }
 
-#top-menu > li#menu-item-wpml-ls-364-de:before { /*slash in language selection*/
-    color: #000;
+.page-template-page-headerless #top-menu a,
+#top-menu > li#menu-item-wpml-ls-364-de:before, /*slash in language selection*/
+.single #et_search_icon:before, .page-template-page-headerless #et_search_icon:before, .home #et_search_icon:before, /*magnifying glass in header*/
+#top-menu-nav a,
+.et-social-icon a:hover,
+.et-social-icon a:hover:before,
+#et-info-email:hover,
+#et-info-email:hover:before {
+    color: #000 !important;
 }
 
-.single #et_search_icon:before, .page-template-page-headerless #et_search_icon:before, .home #et_search_icon:before { /*magnifying glass in header*/
-    color: #000;
+.searchResults p {
+    margin-bottom: 40px;
 }
 
 .L1header .L1tag a { /*intro text link underlines*/
@@ -149,7 +141,6 @@
     margin-top: 15px;
     border-radius: 5px;
     box-sizing: border-box;
-    box-shadow: 4px 4px 10px 4px rgba(44,104,54,.6);
     padding: 40px 24px;
     background-color: #fff;
     color: #000;
@@ -161,10 +152,6 @@
     opacity: 1 !important;
     width: 500px !important;
     height: auto !important;
-}
-
-#moreInfoTooltip a {
-    color: #2c6836;
 }
 
     .et_pb_blog_grid .et_pb_post {
@@ -199,6 +186,8 @@ footer {
 
 .pageNr {
     display: inline;
+    padding: 5px;
+    font-size: 17px;
     margin-right: 16px !important;
     cursor: pointer;
 }
@@ -381,7 +370,6 @@ ul#menu-footer-menu.bottom-nav {
     top: 0;
     left: 0;
     background-color: #fff;
-    box-shadow: 2px 2px 3px rgba(44,104,54,.5);
 }
 
 .a2a_kit.mobileNavActiveItems{
@@ -402,7 +390,6 @@ ul#menu-footer-menu.bottom-nav {
     width: 100%;
     height: 48px;
     margin-top: 80px !important;
-    border-bottom: 2px solid rgba(44,104,54,.5)
 }
 #top-menu-nav.mobileNavActiveItems {
     width: 100%;
@@ -417,7 +404,6 @@ ul#menu-footer-menu.bottom-nav {
     }
     #top-menu-nav.mobileNavActiveItems li a {
         margin-bottom: 12px;
-        border-bottom: 2px solid rgba(44,104,54,.5);
         padding-bottom: 8px !important;
     }
     #top-menu-nav.mobileNavActiveItems .current_page_item a,
@@ -534,7 +520,6 @@ ul#menu-footer-menu.bottom-nav {
     }
 }
 
-/*already editet or my own code*/
 #main-header {
     background: transparent;
     box-shadow: none;
@@ -564,7 +549,7 @@ ul#menu-footer-menu.bottom-nav {
     margin: auto;
 }
 
-#pageOverload {
+#pageOverflow {
     display: inline;
     width: 15px !important;
     margin: 0 0 0 -8px !important;
@@ -588,4 +573,3 @@ ul#menu-footer-menu.bottom-nav {
 #footerTopSection {
     height: 150px;
 }
-

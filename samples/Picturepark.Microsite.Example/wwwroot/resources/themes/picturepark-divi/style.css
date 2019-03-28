@@ -15,16 +15,16 @@
  Author URI:     http://www.divithemeexamples.com 
  Template:       Divi
  Version:        1.0 
-*/ 
-@import url("font-awesome.css"); 
+*/
+@import url("../../fonts/font-awesome.css"); 
 
 @font-face {
   font-family: "picturepark";
-  src:url("fonts/picturepark.eot");
-  src:url("fonts/pictureparkd41d.eot?#iefix") format("embedded-opentype"),
-    url("fonts/picturepark.woff") format("woff"),
-    url("fonts/picturepark.ttf") format("truetype"),
-    url("fonts/picturepark.svg#picturepark") format("svg");
+  src:url("../../fonts/picturepark.eot");
+  src:url("../../fonts/fontsd41d.eot?#iefix") format("embedded-opentype"),
+    url("../../fonts/picturepark.woff") format("woff"),
+    url("../../fonts/picturepark.ttf") format("truetype"),
+    url("../../fonts/picturepark.svg#picturepark") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -643,7 +643,6 @@ body.search .leadP {
 /* Bottom Bar */
 body #footer-bottom {
 	padding: 20px 0 20px !important;
-	background-color: #354553 !important;
 }
 .siteFooter {
 	padding-top: 34px !important;
@@ -1852,16 +1851,6 @@ header#main-header.et-fixed-header #et-top-navigation {
 	padding-top: 33px !important;
 }
 
-header#main-header.et-fixed-header .logo_container a,
-header#main-header.et-fixed-header #logo,
-header#main-header .logo_container a,
-header#main-header #logo {
-	height: 45px;
-	width: 217px;
-	max-height: 45px;
-	max-width: 217px;
-}
-
 #main-header.et-fixed-header .et-search-field {
 	color: #000000 !important;
 }
@@ -1913,13 +1902,7 @@ header#main-header.et-fixed-header .style-svg #pplogo-black #Picturepark,
 	left: 0;
 	right: 100%;
 	top: 20px;
-	background: #000000; /*** COLOR OF THE LINE ***/
 	height: 2px; /*** THICKNESS OF THE LINE ***/
-}
-
-
-#top-menu li a {
-	color: #000000!important;
 }
 
 body #main-header:not(.et-fixed-header) #top-menu li.current-menu-ancestor > a:before,

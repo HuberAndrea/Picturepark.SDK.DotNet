@@ -21,89 +21,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <base href="/" />
     <title>FOFA Press Portal</title>
+    <link rel="shortcut icon" href="~/resources/media/images/FaviconFOFA.png" />
 
-
-
-
-    <link rel="canonical" href="index.html" />
-
-    <link rel="stylesheet" id="parent-style-css" href="resources/wp-content/themes/Divi/style.css" type="text/css" media="all" />
-    <link rel="stylesheet" id="divi-style-css" href="resources/wp-content/themes/Picturepark-Divi/style.css" type="text/css" media="all" />
-
-    <!--<link rel="stylesheet" id="font-awesome-css" href="resources/font-awesome/4.1.0/css/font-awesome.min.css" type="text/css" media="all" />-->
-    <link href="~/resources/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-
-
-    <link rel="https://api.w.org/" href="https://picturepark.com/wp-json/" />
-    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://picturepark.com/xmlrpc.php?rsd" />
-    <link rel="alternate" type="application/json+oembed" href="https://picturepark.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fpicturepark.com%2Fsolutions%2F" />
-    <link rel="alternate" type="text/xml+oembed" href="https://picturepark.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fpicturepark.com%2Fsolutions%2F&amp;format=xml" />
-
-    @*<script type="text/javascript" src="resources/menu/page.js" async="async"></script>*@
-    <script async src="https://static.addtoany.com/menu/page.js"></script>
-
-    <link rel="shortcut icon" href="~/resources/Media/Images/FaviconFOFA.png" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400" rel="stylesheet">
+    <link rel="stylesheet" id="parent-style-css" href="~/resources/themes/divi/style.css" type="text/css" media="all" />
+    <link rel="stylesheet" id="divi-style-css" href="~/resources/themes/picturepark-divi/style.css" type="text/css" media="all" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
 
-
-    <!--Bootstrap files below this comment-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-    <script src="~/resources/menu/bootstrap.js"></script>
-
-
-    @*<script type="text/javascript">
-            var cssTarget = "img.";
-            var ppScript = { "pluginsUrl": "https:\/\/picturepark.com\/wp-content\/plugins" };
-            var pictureparkUploadData = { "editorPluginFile": "https:\/\/picturepark.com\/wp-content\/plugins\/picturepark\/picturepark-media-upload.php" };
-            var lazyload_video_settings = { "youtube": { "theme": "dark", "colour": "red", "showinfo": true, "relations": true, "buttonstyle": "youtube_button_image", "controls": true, "loadpolicy": true, "responsive": true, "thumbnailquality": "0", "preroll": "", "postroll": "", "displaybranding": false, "callback": "<!--YOUTUBE_CALLBACK-->" }, "vimeo": { "buttonstyle": "youtube_button_image", "playercolour": "#00adef", "responsive": true, "preroll": "", "postroll": "", "show_title": false, "displaybranding": false, "callback": "<!--VIMEO_CALLBACK-->" } };
-            var et_shortcodes_strings = { "previous": "Previous", "next": "Next" };
-            var et_pb_custom = { "ajaxurl": "https:\/\/picturepark.com\/wp-admin\/admin-ajax.php", "images_uri": "https:\/\/picturepark.com\/wp-content\/themes\/Divi\/images", "builder_images_uri": "https:\/\/picturepark.com\/wp-content\/themes\/Divi\/includes\/builder\/images", "et_frontend_nonce": "3b4b7937f3", "subscription_failed": "Please, check the fields below to make sure you entered the correct information.", "et_ab_log_nonce": "4906e1fd9c", "fill_message": "Please, fill in the following fields:", "contact_error_message": "Please, fix the following errors:", "invalid": "Invalid email", "captcha": "Captcha", "prev": "Prev", "previous": "Previous", "next": "Next", "wrong_captcha": "You entered the wrong number in captcha.", "is_builder_plugin_used": "", "ignore_waypoints": "no", "is_divi_theme_used": "1", "widget_search_selector": ".widget_search", "is_ab_testing_active": "", "page_id": "5421", "unique_test_id": "", "ab_bounce_rate": "5", "is_cache_plugin_active": "no", "is_shortcode_tracking": "" };
-            var icl_vars = { "current_language": "en", "icl_home": "https:\/\/picturepark.com\/", "ajax_url": "https:\/\/picturepark.com\/wp-admin\/admin-ajax.php", "url_type": "1" };
-            var soliloquy_ajax = { "ajax": "https:\/\/picturepark.com\/wp-admin\/admin-ajax.php", "ajax_nonce": "e1020862fe" };
-        </script>*@
-
-
-    @*<script>
-            jQuery(function ($) {
-                var offset = 40;
-                var $header = $('#main-header');
-                // Override the addClass to prevent fixed header class from being added before offset reached
-                var addclass = $.fn.addClass;
-                $.fn.addClass = function () {
-                    var result = addclass.apply(this, arguments);
-                    if ($(window).scrollTop() < offset) {
-                        $header.removeClass('et-fixed-header');
-                    }
-                    return result;
-                }
-                // Remove fixed header class initially
-                $header.removeClass('et-fixed-header');
-                // Create waypoint which adds / removes fixed header class when offset reached
-                $('body').waypoint({
-                    handler: function (d) {
-                        $header.toggleClass('et-fixed-header', (d === 'down'));
-                    },
-                    offset: -offset
-                });
-            });
-        </script>*@
-
-    @*<link rel="stylesheet" id="et-core-unified-cached-inline-styles" href="~/resources/wp-content/plugins/et-core-unified/et-core-unified.min.css" onerror="et_core_page_resource_fallback(this, true)" onload="et_core_page_resource_fallback(this)"/>*@
-
-    @*<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">*@
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="https://api.w.org/" href="https://picturepark.com/wp-json/" />
+    <link rel="alternate" type="application/json+oembed" href="https://picturepark.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fpicturepark.com%2Fsolutions%2F" />
+    <link rel="alternate" type="text/xml+oembed" href="https://picturepark.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fpicturepark.com%2Fsolutions%2F&amp;format=xml" />
+    <script async src="https://static.addtoany.com/menu/page.js"></script> <!--add to any plugin (social media share)-->
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://picturepark.com/xmlrpc.php?rsd" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-    <!--my custom files-->
     <link href="~/resources/styles/defaultStyles.css" rel="stylesheet" />
     <link href="~/resources/styles/customStyles.css" rel="stylesheet" />
     <script src="~/resources/functions/functions.js"></script>
@@ -119,14 +54,10 @@
             <div class="container clearfix et_menu_container">
                 <div class="logo_container">
                     <span class="logo_helper"></span>
-                    <a href="/">
-                        <div id="logo" class="style-svg"></div>
-                        @*<img src="~/resources/Media/Images/Logo-FOFA.png" alt="Fine Organic Foods Association" class="style-svg" />*@
-                    </a>
+                    <a href="/"><div id="logo" class="style-svg"></div></a>
                 </div>
 
                 <div id="et-top-navigation" data-height="120" data-fixed-height="36">
-
                     <div href="mailto:info@picturepark.com" id="moreInfo" onclick="moreInfoOpen()">
                         <p>@Localizer.GetString("More info about this demo")</p>
                         <div id="moreInfoTooltip">
@@ -160,12 +91,10 @@
                         </ul>
                     </nav>
 
-                    <!--search icon, has no function whatsoever currently-->
                     <div id="et_top_search">
                         <span id="et_search_icon"></span>
                     </div>
 
-                    <!--mobile nav, needs to be changed as it was part of the DiviBooster WP theme before-->
                     <div id="et_mobile_nav_menu">
                         <div class="mobile_nav closed">
                             <span class="select_page">Select Page</span>
@@ -178,10 +107,8 @@
                         <div id="mobileNavHeader"></div>
                     </div>
                 </div> <!-- #et-top-navigation -->
-
-
             </div> <!-- .container -->
-            <!--don't know yet what this is. is this the search function?-->
+
             <div class="et_search_outer">
                 <div class="container et_search_form_container et_pb_search_visible et_pb_no_animation">
                     <form role="search" method="get" class="et-search-form" asp-controller="Search" asp-action="Index">
@@ -197,7 +124,6 @@
             <div id="main-content">
                 <article class="page type-page status-publish has-post-thumbnail hentry">
                     <div class="entry-content">
-                        <!-- entry content includes the header and welcome text and image -->
                         <!--INTRO TEXT-->
                         <div class="et_pb_section L1header et_pb_section_0 et_pb_with_background et_section_regular">
                             <div class=" et_pb_row et_pb_row_0 et_pb_row_fullwidth">
@@ -313,8 +239,7 @@
     </div> <!-- #page-container -->
 
 
-    <!--OLD ADD TO ANY PLUGIN-->
-    @*<div class="a2a_kit a2a_kit_size_48 a2a_floating_style a2a_vertical_style" style="left:0px;top:420px;"><a class="a2a_button_facebook" href="https://www.addtoany.com/add_to/facebook?linkurl=https%3A%2F%2Fpicturepark.com%2Fsolutions%2F&amp;linkname=Content%20Management%20Solutions" title="Facebook" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_twitter" href="https://www.addtoany.com/add_to/twitter?linkurl=https%3A%2F%2Fpicturepark.com%2Fsolutions%2F&amp;linkname=Content%20Management%20Solutions" title="Twitter" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_google_plus" href="https://www.addtoany.com/add_to/google_plus?linkurl=https%3A%2F%2Fpicturepark.com%2Fsolutions%2F&amp;linkname=Content%20Management%20Solutions" title="Google+" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_linkedin" href="https://www.addtoany.com/add_to/linkedin?linkurl=https%3A%2F%2Fpicturepark.com%2Fsolutions%2F&amp;linkname=Content%20Management%20Solutions" title="LinkedIn" rel="nofollow noopener" target="_blank"></a><a class="a2a_button_xing" href="https://www.addtoany.com/add_to/xing?linkurl=https%3A%2F%2Fpicturepark.com%2Fsolutions%2F&amp;linkname=Content%20Management%20Solutions" title="XING" rel="nofollow noopener" target="_blank"></a><a class="a2a_dd addtoany_share_save" href="https://www.addtoany.com/share"></a></div><link rel="stylesheet" id="soliloquy-style-css-css" href="resources/wp-content/plugins/soliloquy/assets/css/soliloquy.css" type="text/css" media="all" />*@
+    <!--add to any plugin-->
     <div class="a2a_kit a2a_kit_size_48 a2a_default_style a2a_floating_style a2a_vertical_style">
         <a class="a2a_button_facebook"></a>
         <a class="a2a_button_twitter"></a>

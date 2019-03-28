@@ -786,10 +786,6 @@ body.admin-bar.et_fixed_nav.et_secondary_nav_enabled #main-header, body.admin-ba
     -webkit-transform: translate3d(0,0,0)
 }
 
-.et_pb_svg_logo #logo, .et_pb_svg_logo.et_header_style_split .et-fixed-header .centered-inline-logo-wrap #logo {
-    height: 54%
-}
-
 .logo_container {
     -webkit-transition: all .4s ease-in-out;
     -moz-transition: all .4s ease-in-out;
@@ -2183,10 +2179,6 @@ figure.woocommerce-product-gallery__wrapper {
         #footer-info a:hover {
             opacity: .7
         }
-
-#et-footer-nav {
-    background-color: rgba(255,255,255,.05)
-}
 
 .bottom-nav {
     padding: 15px 0
@@ -4737,8 +4729,8 @@ ul.et_pb_side_nav {
 
 @font-face {
     font-family: ETmodules;
-    src: url(core/admin/fonts/modules.eot);
-    src: url(core/admin/fonts/modulesd41d.eot?#iefix) format("embedded-opentype"),url(core/admin/fonts/modules.ttf) format("truetype"),url(core/admin/fonts/modules.woff) format("woff"),url(core/admin/fonts/modules.svg#ETmodules) format("svg");
+    src: url(../../fonts/modules.eot);
+    src: url(../../fonts/modulesd41d.eot?#iefix) format("embedded-opentype"),url(../../fonts/modules.ttf) format("truetype"),url(../../fonts/modules.woff) format("woff"),url(../../fonts/modules.svg#ETmodules) format("svg");
     font-weight: 400;
     font-style: normal
 }

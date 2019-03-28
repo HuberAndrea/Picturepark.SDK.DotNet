@@ -10,186 +10,6 @@ $(window).scroll(function () {
     }
 });
 
-
-/*--------ARTICLE OVERFLOW HANDLER START-----------*/
-var articleCount = {}; //define global vars
-var targetPage = {};
-var page = {}; //create global var for page count in for loop
-var divInnerText = {};
-var currentPage = {};
-
-$(document).ready(function () { //set up paging function
-    articleCount.postNumber = $(".articlePreview").length; //fill global var
-
-    if (articleCount.postNumber > 9) {
-        $(".articlePreview:gt(8)").hide(); //hide overflow articles
-        $("#pageCount").addClass("multiPageActive"); //show older entries button
-    
-        var divideByNine = Math.ceil(articleCount.postNumber / 9); //variables required for the loop
-        var para1 = 0;
-        var para2 = 9;
-        targetPage.single = 1;
-
-        for (targetPage.single; targetPage.single < divideByNine + 1; ++targetPage.single) {
-            page[targetPage.single] = $(".articlePreview").slice(para1, para2);  //create a new var for every page
-
-            para1 = para1 + 9;
-            para2 = para2 + 9;
-            $("#pageCount").append("<div id='pageNr" + targetPage.single + "' class='pageNr'>" + targetPage.single + "</div>");
-        }
-
-        $("#pageNr1").addClass("pageActive"); //default active page
-        $("#nextPage").addClass("multiPageActive");
-
-        //cut overload articles and replace with ...
-        var pageCount = $(".pageNr");
-        if (pageCount.length > 4) {
-            console.log("über 4");
-
-            var pageOverload = pageCount.toArray().length - 3;
-            pageOverload = pageCount.slice(pageOverload);
-            console.log(pageOverload);
-            pageOverload.hide();
-            $("#pageCount").append("<div id='pageOverload'> ...</div>");
-        }
-    }
-});
-
-
-
-$(document).ready(function () { //paging function
-    $(".pageNr").click(function () {
-        divInnerText.global = $(this).text();
-        globalF1();
-
-        $(".pageNr").removeClass("pageActive");
-        $(this).addClass("pageActive");
-
-        $("html, body").animate({ scrollTop: 0 }, "slow");
-
-        if ($("#pageNr1").hasClass("pageActive")) {
-            $("#nextPage").addClass("multiPageActive");
-            $("#lastPage").removeClass("multiPageActive");
-        }
-        else if (page[targetPage.single - 1]) {
-            $("#nextPage").removeClass("multiPageActive");
-            $("#lastPage").addClass("multiPageActive");
-        }
-        else {
-            $("#nextPage").addClass("multiPageActive");
-            $("#lastPage").addClass("multiPageActive");
-        }
-    });
-});
-
-function globalF1() {
-    $.each(page, function (index, value) {
-        if (index == divInnerText.global) {
-            $(this).show();
-        }
-        else {
-            $(this).hide();
-        }
-    });
-}
-
-function navPagesGlobal() {
-    var currentPage = parseInt($(".pageActive").text(), 10);
-
-    var currentPageDiv = "#pageNr" + currentPage;
-    console.log(currentPageDiv);
-    $(".pageNr").removeClass("pageActive");
-    $(this).addClass("pageActive");
-
-    $("html, body").animate({ scrollTop: 0 }, "slow");
-
-    if ($("#pageNr1").hasClass("pageActive")) {
-        $("#nextPage").addClass("multiPageActive");
-        $("#lastPage").removeClass("multiPageActive");
-    }
-    else if (page[targetPage.single - 1]) {
-        $("#nextPage").removeClass("multiPageActive");
-        $("#lastPage").addClass("multiPageActive");
-    }
-    else {
-        $("#nextPage").addClass("multiPageActive");
-        $("#lastPage").addClass("multiPageActive");
-    }
-}
-
-function showNextPage() {
-    //find out what page is active
-    var divInnerText = $(".pageActive").text();
-    
-    //move to page = current page +1
-    var nextPage = parseInt(divInnerText, 10) + 1;
-
-    $(".pageNr").removeClass("pageActive");
-    $("#pageCount").find("#pageNr" + nextPage).addClass("pageActive");
-
-    $.each(page, function (index, value) {
-        if (index == nextPage) {
-            $(this).show();
-        }
-        else {
-            $(this).hide();
-        }
-    });
-
-    $("html, body").animate({ scrollTop: 0 }, "slow");
-
-    if ($("#pageNr1").hasClass("pageActive")) {
-        $("#nextPage").addClass("multiPageActive");
-        $("#lastPage").removeClass("multiPageActive");
-    }
-    else if (page[targetPage.single - 1]) {
-        $("#nextPage").removeClass("multiPageActive");
-        $("#lastPage").addClass("multiPageActive");
-    }
-    else {
-        $("#nextPage").addClass("multiPageActive");
-        $("#lastPage").addClass("multiPageActive");
-    }
-
-}
-
-function showLastPage() {
-    //find out what page is active
-    var divInnerText = $(".pageActive").text();
-
-    //move to page = current page +1
-    var lastPage = parseInt(divInnerText, 10) -1;
-
-    $(".pageNr").removeClass("pageActive");
-    $("#pageCount").find("#pageNr" + lastPage).addClass("pageActive");
-
-    $.each(page, function (index, value) {
-        if (index == lastPage) {
-            $(this).show();
-        }
-        else {
-            $(this).hide();
-        }
-    });
-
-    $("html, body").animate({ scrollTop: 0 }, "slow");
-
-    if ($("#pageNr1").hasClass("pageActive")) {
-        $("#nextPage").addClass("multiPageActive");
-        $("#lastPage").removeClass("multiPageActive");
-    }
-    else if (page[targetPage.single - 1]) {
-        $("#nextPage").removeClass("multiPageActive");
-        $("#lastPage").addClass("multiPageActive");
-    }
-    else {
-        $("#nextPage").addClass("multiPageActive");
-        $("#lastPage").addClass("multiPageActive");
-    }
-}
-/*--------ARTICLE OVERFLOW HANDLER END-----------*/
-
-
 $(document).ready(function () {
     $("#et_search_icon").click(function () {
         $(".et_search_outer").addClass("searchActive");
@@ -287,3 +107,106 @@ function moreInfoOpen() {
         }
     });
 }
+
+/*--------ARTICLE OVERFLOW HANDLER START-----------*/
+//define global vars
+var pageCount = {};
+var page = {};
+var divInnerText = {};
+var pageCreator = {};
+var targetPage = {};
+var getNumber = {};
+
+$(document).ready(function () {
+    var articleCount = $(".articlePreview").length;
+
+    if (articleCount > 9) {
+        $(".articlePreview:gt(8)").hide(); //hide overflow articles
+        $("#nextPage").addClass("multiPageActive");
+        $("#pageCount").addClass("multiPageActive");
+
+        var divideByNine = Math.ceil(articleCount / 9);
+        var para1 = 0;
+        var para2 = 9;
+        pageCreator.global = 1;
+
+        for (pageCreator.global; pageCreator.global < divideByNine + 1; ++pageCreator.global) { //create html elements for every page
+            page[pageCreator.global] = $(".articlePreview").slice(para1, para2);  //create a new var for every page
+            para1 = para1 + 9;
+            para2 = para2 + 9;
+            $("#pageCount").append("<div id='pageNr" + pageCreator.global + "' class='pageNr'>" + pageCreator.global + "</div>");
+        }
+
+        pageCount.global = $(".pageNr");
+        if (pageCount.global.length > 4) {
+            var pageOverflow = pageCount.global.toArray().length - 3; //list overflow pages in an array
+            pageOverflow = pageCount.global.slice(pageOverflow);
+            pageOverflow.hide();
+            $("#pageCount").append("<div id='pageOverflow'> ...</div>"); //add "..." instead of overflow articles
+        }
+
+        $("#pageNr1").addClass("pageActive"); //default active page is 1
+    }
+}); 
+
+$(document).ready(function () {
+    $(".pageNr").click(function () {
+        divInnerText.global = $(this).text(); //get inner text of clicked page
+
+        targetPage.global = $(this);
+        universalPaging(); //execute paging function
+    });
+});
+
+function showNextPage() {
+    getPageNumber();
+    getNumber.global = getNumber.global + 1;
+    targetPage.global = "#pageNr" + getNumber.global.toString();
+    targetPage.global = $(targetPage.global);
+    universalPaging();
+    getNumber.global = null; //exit function and remove value from getnumber
+}
+function showLastPage() {
+    getPageNumber();
+    getNumber.global = getNumber.global -1;
+    targetPage.global = "#pageNr" + getNumber.global.toString();
+    targetPage.global = $(targetPage.global);
+    universalPaging();
+    getNumber.global = null; //exit function and remove value from getnumber
+}
+
+function getPageNumber() {
+    getNumber.global = $(".pageActive").attr("id");
+    getNumber.global = getNumber.global[getNumber.global.length - 1];
+    getNumber.global = parseInt(getNumber.global);
+}
+
+function universalPaging() {
+    $(".pageNr").removeClass("pageActive");
+    targetPage.global.addClass("pageActive");
+
+    if (getNumber.global) { //show and hide articles
+        $(".articlePreview").hide();
+        page[getNumber.global].show();
+    }
+    else {
+        $(".articlePreview").hide();
+        page[divInnerText.global].show();
+    }
+    
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+
+    if ($("#pageNr1").hasClass("pageActive")) {
+        $("#nextPage").addClass("multiPageActive");
+        $("#lastPage").removeClass("multiPageActive");
+    }
+    else if (!$("#pageNr1").hasClass("pageActive") && !$(".pageNr:last").hasClass("pageActive")) {
+        $("#nextPage").addClass("multiPageActive");
+        $("#lastPage").addClass("multiPageActive");
+    }
+    else {
+        $("#nextPage").removeClass("multiPageActive");
+        $("#lastPage").addClass("multiPageActive");
+    }
+}
+/*--------ARTICLE OVERFLOW HANDLER END-----------*/

@@ -40,9 +40,6 @@
 	    <Generator>ResXFileCodeGenerator</Generator>
 	  </EmbeddedResource>
 	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="wwwroot\resources\wp-content\NewFolder\" />
-	</ItemGroup>
 	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
 	  <Exec Command="dotnet bundle" />
 	</Target>
