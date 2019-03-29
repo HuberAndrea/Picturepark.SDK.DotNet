@@ -518,6 +518,10 @@ ul#menu-footer-menu.bottom-nav {
     .articlePreview{
         width: 100%;
     }
+    .breadcrumbsBox{
+        margin-top: -100px;
+        margin-bottom: 80px;
+    }
 }
 
 #main-header {
