@@ -107,3 +107,13 @@ p::selection, h1::selection, h2::selection, h3::selection, a::selection, div::se
     background-size: contain;
     background-repeat: no-repeat;
 }
+
+
+/*custom adjustments for FOR*/
+#top-menu li:nth-child(2) {
+    display: none;
+}
+
+/*.a2a_kit {
+    display: none;
+}*/
